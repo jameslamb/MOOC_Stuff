@@ -3,4 +3,47 @@
 
 ####*Video 1.2 - Asset Returns*
 
-**A. **
+**A. Asset Return Calculations**
+
+- Net return: % change over some period (i.e. "the holding period return")
+- Gross return: Net return + inital investment (i.e. principal)
+- (x-a)/a = (x/a)-1
+
+**B. Multi-Period Returns**
+
+- *n*-period return = V*(1+r)^n^-V
+- The two-period return is the geometric (multiplicative) average of two one-period returns
+- Two-month (or any multi-period) returns are not additive
+- There is a *multiplicative* relationship between successive returns
+- To reiterate: a *k*-month return is the geometric average of *k* one-month returns
+
+####*Video 1.3 - Portfolio Returns*
+
+**A. Portfolio Returns**
+
+- A portfolio is composed of some investment distributed amongst multiple assets
+- Some notataion
+    - *V* = total investment
+    - *x~A~* & *x~B~* = shares in A and B, respectively
+- Portfolio returns *are* additive
+    - 1-period return on the portfolio is given by:
+    - *R~p,t~* = *x~A~* *R~A,t~* + *x~B~* *R~B,t~*
+- Portolfio returns are linear combinations of returns on underlying securities
+
+**B. A Generalized Form of This Relationship**
+
+- *R~p,t~* = sum(*x~i~* *R~i,t~*)
+- Down the road, matrix algebra will help us with these relationships
+- We'll be able to consider a vector of weights and another vector of returns
+
+####*Video 1.4 - Dividends*
+
+**A. Adjusting for Dividends**
+
+- Real returns to equities come from some combination of capital gains and dividends
+- Return = %change in P + *D~t~*/*P~t-1~*
+    - That is, capital gain + "dividend yield"
+
+####*Video 1.5 - Inflation*
+
+**A. 
