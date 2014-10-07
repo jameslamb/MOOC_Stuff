@@ -46,4 +46,34 @@
 
 ####*Video 1.5 - Inflation*
 
-**A. 
+**A. Adjusting for Inflation**
+
+- This adjustment leads to calculation of "real" rates of return
+- Common price indices: CPI, PCE
+    - "core" versions of these have volatile portions (food, energy) taken out
+- Deflate the price: (nominal_price)/CPI
+- You can break this down algebraically to find an interesting relationship:
+    - realreturn = (1 + nominalreturn) / (1 + % change in inflation) - 1
+- The point here is to evaluate the new purchasing power you gain from your investment growing
+    - This is preferable to just calculating the new dollars you've earned
+- Higher inflation = lower real returns (for a given % change in nominal price)
+
+####*Video 1.6 - Annualizing Returns*
+
+**A. Annualizing Returns**
+
+- Annualizing is basically converting your period into years, compounding, and finding future value
+- Compound annual rate of return for a monthly rate of return
+    - *R~A~* = (1+*r~t~*)^(*t*) - 1
+    
+**B. Annualized two-year returns**
+
+- What if you have an investment with a two-year return, and you want to find the CAGR?
+- CAGR = (value~end~/value~start~)^(1/*t*)-1
+    - where *t* is the number of years that passed between the beginning and end dates
+    
+**C. A Note on Continous Compounding**
+
+- Continously compounded returns are additive
+- So, if you have a monthly continuous return and you want to convert it to an annual return...
+- ... you need to *multiply* the monthly cc return by 12
