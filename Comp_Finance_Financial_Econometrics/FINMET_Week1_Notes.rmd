@@ -77,3 +77,91 @@
 - Continously compounded returns are additive
 - So, if you have a monthly continuous return and you want to convert it to an annual return...
 - ... you need to *multiply* the monthly cc return by 12
+
+####*Video 1.7 - Continuously Compounded Returns*
+
+**A. Continuous Compounding**
+
+- continuously compounded returns are attractive because they are:
+    a. computationally simple
+    b. additive
+- r~t~ = ln(1 + R~t~) = ln(P~t~/P~t-1~)
+- Simple return = e^r~t~^ - 1
+- the continuously compounded return is always a smaller number than the simple return
+
+**B. Some Log and Exponential Rules**
+
+- ln(0) = -\infinity
+- ln(1) = 0
+- ln(e^x^)=x, e^ln(x)^=x
+- ln(x^y^) = y ln(x)
+
+**C. Intuition**
+
+- The continuously compounded return is just the continuously compounded growth rate of prices between two periods
+- If the simple rate of return is small (close to 0), ln(1 + R~t~) is approximately R~t~
+- continuously compounded return is just dlog(price)
+- in macro, we plot the logarithm to show % changes (elasticity)
+    - slope of log graph is the growth rate between two time periods
+
+**D. Multi-period Returns**
+
+- continuously compounded returns are additive (not multiplicative like simple returns)
+
+####*Video 1.8 - Portfolio Returns and Inflation*
+
+**A. Portfolio Returns**
+
+- Return on a portfolio is just a weighted average of returns on component assets of the portfolio
+- CC portfolio return is still ln(1 + sum(simple returns))
+- CC portolfio returns are *not* simply a weighted average of CC returns on individual assets in the portfolio
+    - the CC portfolio return is equal to ln(1+ weighted average(simple returns))
+    - ln(1 + simple return)
+
+**B. Adjusting for Inflation**
+
+- this is easier when working with cc returns
+- The real return is just r~t~ - pi~t~^cc^
+- the real continuously compounded return = nominal cc return - cc inflation growth (log diff in CPI)
+
+####*Video 1.9 - Simple Returns (Excel Example)*
+
+**A. Asset Return Calculations in Excel**
+
+- "the world runs through an Excel spreadsheet"
+
+####*Video 1.10 - Getting Financial Data from Yahoo!*
+
+**A. Yahoo!**
+
+- provides a lot of free historical data
+- others: Microsoft Money, Google, Oanda
+- this course uses data from Yahoo! Finance
+- NASDAQ = "national association of Security Dealers Automated Quoting System"
+- Bid and Ask
+    - You buy from brokers at the Ask price, you sell to the Broker at the Bid price
+    - Bid-Ask spread is profit for the broker on a "round-trip" transaction
+- plenty of data (down to daily frequency) in the "historical prices" portion of Yahoo
+- "Adjusted Close" is the closing price adjusted for dividends and stock splits
+- Stock splits can cause a big change in the spot price
+- the "adjusted price" from Yahoo automatically accounts for splits and dividends
+- note that the price data from Yahoo is artificialy rounded to two digits, so returns may be biased due to measurement error
+
+####*Video 1.11 - Return Calculations in Excel*
+
+**A. Doing Return Calcs in Excel**
+
+- You can hit the "fx" button by the command bar in Excel to get organized lists of functions
+- This will also give you links to help articles on various functions
+
+####*Video 1.12 - Growth of $1*
+
+**A. Looking at returns in Excel**
+
+- Rates of return are asymmetric by definition
+    - After losing 50%, you'd need a 100% return on your new balance to cancel out that loss
+    - In addition, losses cannot go below -100%, but gains are theoretically unbounded
+- a "growth of a dollar" graph is, in some contexts, a more useful visualization that a graph of % changes in the price
+    - such curves, more formally known as "equity curves", allow you so see trend and cycle components a bit more easily
+- this is like "normalizing the price to start at 1"
+- 
