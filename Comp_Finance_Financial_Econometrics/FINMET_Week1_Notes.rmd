@@ -1,0 +1,167 @@
+<center> <h2>Comp. Finance and Financial Econometrics - Week 1</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Video 1.2 - Asset Returns*
+
+**A. Asset Return Calculations**
+
+- Net return: % change over some period (i.e. "the holding period return")
+- Gross return: Net return + inital investment (i.e. principal)
+- (x-a)/a = (x/a)-1
+
+**B. Multi-Period Returns**
+
+- *n*-period return = V*(1+r)^n^-V
+- The two-period return is the geometric (multiplicative) average of two one-period returns
+- Two-month (or any multi-period) returns are not additive
+- There is a *multiplicative* relationship between successive returns
+- To reiterate: a *k*-month return is the geometric average of *k* one-month returns
+
+####*Video 1.3 - Portfolio Returns*
+
+**A. Portfolio Returns**
+
+- A portfolio is composed of some investment distributed amongst multiple assets
+- Some notataion
+    - *V* = total investment
+    - *x~A~* & *x~B~* = shares in A and B, respectively
+- Portfolio returns *are* additive
+    - 1-period return on the portfolio is given by:
+    - *R~p,t~* = *x~A~* *R~A,t~* + *x~B~* *R~B,t~*
+- Portolfio returns are linear combinations of returns on underlying securities
+
+**B. A Generalized Form of This Relationship**
+
+- *R~p,t~* = sum(*x~i~* *R~i,t~*)
+- Down the road, matrix algebra will help us with these relationships
+- We'll be able to consider a vector of weights and another vector of returns
+
+####*Video 1.4 - Dividends*
+
+**A. Adjusting for Dividends**
+
+- Real returns to equities come from some combination of capital gains and dividends
+- Return = %change in P + *D~t~*/*P~t-1~*
+    - That is, capital gain + "dividend yield"
+
+####*Video 1.5 - Inflation*
+
+**A. Adjusting for Inflation**
+
+- This adjustment leads to calculation of "real" rates of return
+- Common price indices: CPI, PCE
+    - "core" versions of these have volatile portions (food, energy) taken out
+- Deflate the price: (nominal_price)/CPI
+- You can break this down algebraically to find an interesting relationship:
+    - realreturn = (1 + nominalreturn) / (1 + % change in inflation) - 1
+- The point here is to evaluate the new purchasing power you gain from your investment growing
+    - This is preferable to just calculating the new dollars you've earned
+- Higher inflation = lower real returns (for a given % change in nominal price)
+
+####*Video 1.6 - Annualizing Returns*
+
+**A. Annualizing Returns**
+
+- Annualizing is basically converting your period into years, compounding, and finding future value
+- Compound annual rate of return for a monthly rate of return
+    - *R~A~* = (1+*r~t~*)^(*t*) - 1
+    
+**B. Annualized two-year returns**
+
+- What if you have an investment with a two-year return, and you want to find the CAGR?
+- CAGR = (value~end~/value~start~)^(1/*t*)-1
+    - where *t* is the number of years that passed between the beginning and end dates
+    
+**C. A Note on Continous Compounding**
+
+- Continously compounded returns are additive
+- So, if you have a monthly continuous return and you want to convert it to an annual return...
+- ... you need to *multiply* the monthly cc return by 12
+
+####*Video 1.7 - Continuously Compounded Returns*
+
+**A. Continuous Compounding**
+
+- continuously compounded returns are attractive because they are:
+    a. computationally simple
+    b. additive
+- r~t~ = ln(1 + R~t~) = ln(P~t~/P~t-1~)
+- Simple return = e^r~t~^ - 1
+- the continuously compounded return is always a smaller number than the simple return
+
+**B. Some Log and Exponential Rules**
+
+- ln(0) = -\infinity
+- ln(1) = 0
+- ln(e^x^)=x, e^ln(x)^=x
+- ln(x^y^) = y ln(x)
+
+**C. Intuition**
+
+- The continuously compounded return is just the continuously compounded growth rate of prices between two periods
+- If the simple rate of return is small (close to 0), ln(1 + R~t~) is approximately R~t~
+- continuously compounded return is just dlog(price)
+- in macro, we plot the logarithm to show % changes (elasticity)
+    - slope of log graph is the growth rate between two time periods
+
+**D. Multi-period Returns**
+
+- continuously compounded returns are additive (not multiplicative like simple returns)
+
+####*Video 1.8 - Portfolio Returns and Inflation*
+
+**A. Portfolio Returns**
+
+- Return on a portfolio is just a weighted average of returns on component assets of the portfolio
+- CC portfolio return is still ln(1 + sum(simple returns))
+- CC portolfio returns are *not* simply a weighted average of CC returns on individual assets in the portfolio
+    - the CC portfolio return is equal to ln(1+ weighted average(simple returns))
+    - ln(1 + simple return)
+
+**B. Adjusting for Inflation**
+
+- this is easier when working with cc returns
+- The real return is just r~t~ - pi~t~^cc^
+- the real continuously compounded return = nominal cc return - cc inflation growth (log diff in CPI)
+
+####*Video 1.9 - Simple Returns (Excel Example)*
+
+**A. Asset Return Calculations in Excel**
+
+- "the world runs through an Excel spreadsheet"
+
+####*Video 1.10 - Getting Financial Data from Yahoo!*
+
+**A. Yahoo!**
+
+- provides a lot of free historical data
+- others: Microsoft Money, Google, Oanda
+- this course uses data from Yahoo! Finance
+- NASDAQ = "national association of Security Dealers Automated Quoting System"
+- Bid and Ask
+    - You buy from brokers at the Ask price, you sell to the Broker at the Bid price
+    - Bid-Ask spread is profit for the broker on a "round-trip" transaction
+- plenty of data (down to daily frequency) in the "historical prices" portion of Yahoo
+- "Adjusted Close" is the closing price adjusted for dividends and stock splits
+- Stock splits can cause a big change in the spot price
+- the "adjusted price" from Yahoo automatically accounts for splits and dividends
+- note that the price data from Yahoo is artificialy rounded to two digits, so returns may be biased due to measurement error
+
+####*Video 1.11 - Return Calculations in Excel*
+
+**A. Doing Return Calcs in Excel**
+
+- You can hit the "fx" button by the command bar in Excel to get organized lists of functions
+- This will also give you links to help articles on various functions
+
+####*Video 1.12 - Growth of $1*
+
+**A. Looking at returns in Excel**
+
+- Rates of return are asymmetric by definition
+    - After losing 50%, you'd need a 100% return on your new balance to cancel out that loss
+    - In addition, losses cannot go below -100%, but gains are theoretically unbounded
+- a "growth of a dollar" graph is, in some contexts, a more useful visualization that a graph of % changes in the price
+    - such curves, more formally known as "equity curves", allow you so see trend and cycle components a bit more easily
+- this is like "normalizing the price to start at 1"
+- 
