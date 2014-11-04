@@ -89,7 +89,7 @@ The estimated coverage is less than but close to 95%, consistent with the eviden
 
 In this brief inferential analysis, I find some evidence that for 10,000 simulations of 40 random draws from an exponential distribution with $\lambda = 0.2$, the distribution of means of those draws converges to a close approximation of the theoretically expected values. However, the distribution of means remains stuboornly non-normally, with some excess kurtosis and a long right-hand-side tail (i.e. positive skewness.
 
-The R markdown document with the underlying code used to generate this report can be found at [this GitHub repo](https://www.github.com/JayLamb20/STATINF_Project).
+The R markdown document with the underlying code used to generate this report can be found at [this GitHub repo](https://github.com/JayLamb20/MOOC_Stuff/tree/master/Statistical_Inference).
 
 
 \pagebreak

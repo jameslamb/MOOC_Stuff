@@ -67,7 +67,7 @@ This brief and informal analysis gives some preliminary evidence that the Vitami
 
 I apologize to my readers for the brevity of this report. I spent more time than I expected to learning LaTeX for this and the Regression models report. Please grade kindly and offer constructive criticism in the space provided in the evaluation sheets.
 
-The R markdown document with the underlying code used to generate this report can be found at [this GitHub repo](https://www.github.com/JayLamb20/STATINF_Project).
+The R markdown document with the underlying code used to generate this report can be found at [this GitHub repo](https://github.com/JayLamb20/MOOC_Stuff/tree/master/Statistical_Inference).
 
 \pagebreak
 
