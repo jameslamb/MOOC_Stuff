@@ -115,9 +115,9 @@
     - create exploratory plots
     - do some clustering
     
-```{r echo=TRUE}
+```{r echo=TRUE, eval=FALSE}
 #load the data
-library(kernlab)
+require(kernlab)
 data(spam)
 
 #perform some subsampling
@@ -138,7 +138,7 @@ plot(log10(trainSpacm$CaptialAve + 1) ~ tainSpam$type)
 
 - look at some pairwise relationships?
 
-```{r echo=TRUE}
+```{r echo=TRUE, eval=FALSE}
 plot(log10(trainSpam[,1:4] + 1))
 
 #hierarchical clusters?
@@ -155,12 +155,12 @@ plot(hCluster)
 - transformations/processing should be accounted for when necessary
 - measures of uncertainty should be reported
 
-```{r echo=FALSE}
+```{r echo=TRUE, eval=FALSE}
 #the goal: fit a logistic regression
 trainSpam$numType = as.numeric(trainSpam$type) -1
 costFunction = function(x,y) sum(x != (y > 0.5))
 cvError = rep(NA, 55)
-library(boot)
+require(boot)
 
 #run a logistic regression for prediction
 #reformulate is used to create a formula from a text string
@@ -182,7 +182,105 @@ predictedSapm = rep("nonspam", dim(testSpam)[1]
                     
 ## Classify as 'spam' for those with prob > 0.5
 
-predictedSpam[predictionmodel$fitted > 0.5] = "spam
+predictedSpam[predictionmodel$fitted > 0.5] = "spam"
 ```
 
-LEFT OFF ON "Structure of a Data Analysis (pt 2)" 
+**C. Interpret Results**
+
+- Use the right language
+- give an explanation
+- interpret coefficients
+- interpret measures of uncertainty
+
+**D. Challenge Your Results**
+
+- "if you don't do it, someone else will"
+- was the question even valid
+- how were the data analyzed?
+- do you have the right measures of uncertainty?
+- why is your model appropriate? Why is it better than others?
+
+**E. Synthesize/write up results**
+
+- synthesis is important --> there will be a bunch of things you did. Important to parse out the most important ones
+- don't include every analysis. Only the ones needed for the story
+- order analyses according to the story, rather than chronologically
+    - the order you did things was probably scattered, doesn't make sense when you look back at it
+- include "pretty" figures that contribute to the story (probably not your exploratory graphs)
+- benefits of R Markdown/knitr --> preserve the code, make everything reproducible
+- big data analyses will be judged by reproducibility
+
+####*Video 1.8 Organizing Your Analysis*
+
+**A. Data Analysis Files**
+
+- Data
+- Figures
+    - both rough exploratory figures and pretty figures
+- R code
+    - raw/unused scripts
+    - final scripts,
+    - R markdown files
+- Text
+    - README files
+    - text of analysis / report
+    
+**B. Raw Data**
+
+- store this in your analysis folder
+- if the data are from the web, include:
+    - url
+    - description
+    - data you accessed the data (maybe put all this in a README)
+- A tip for git:
+    - add the data to your version control, then keep all the tracking info above in the log message in git as you commit new versions of the data
+
+**C. Processed Data**
+
+- processed data should be named so it is easy to see which script generated the data
+- the processing script - processed data mappign should occur in the README
+- procedded data should be tidy
+
+**D. Exploratory Figures**
+
+- just stuff you look at as you do the analysis, not necessarily part of your final report
+- no need to make these "pretty"
+- final figures will be polished and pretty (perhaps some consistent use of colors)
+- avoid inundating people with a bunch of figures ... message more likely to get lost as you add more and more graphs
+
+**E. Raw Scripts**
+
+- need to keep commenting stuff
+- there might be multiple competing versions of scripts
+- these might include analyses that you get rid of later
+
+**F. Final Scripts**
+
+- lots of comments, good indenting
+- big comment blocks for whole sections
+- include processing details
+- only analyses that appear in the final write-up should be in the final scripts
+
+**F. R markdown files**
+
+- you can used these to generate RR because text and R code are integrated
+- super easy to create
+
+**G. README files**
+
+- not necessary if you use R markdown and literate programming
+- should contain step-by-step instructions for analysis
+- consider Jeff Leek's "swfdr" repo as an example
+
+**H. Text of the Document**
+
+- include a title, introduction, methods, results, and conclusions (includign potential problems)
+- tell a story
+- *do not include every anlysis you performed!*
+- include references for statistical methods
+- see link in course notes --> "Project template, a pre-organized set of files for data analysis" --> [ProjectTemplate package](http://cran.r-project.org/web/packages/ProjectTemplate/ProjectTemplate.pdf)
+
+####*Video 1.9 - Use R version 3.1.1.*
+
+- Most current version of R is 3.1.1, and the course will be taught in
+

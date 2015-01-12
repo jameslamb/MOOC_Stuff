@@ -1,0 +1,8 @@
+<center> <h2>Reproducible Research - Project 1</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+To-Do:
+
+1. Go back to GCLEAN Project, get stuff for working with FitBit data
+2. Add proper title with LinkedIn stuff (again, look at past products)
+
