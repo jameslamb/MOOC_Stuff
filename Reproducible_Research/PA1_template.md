@@ -11,7 +11,7 @@ In this project, we were asked to pull in some health data from a personal activ
 
 ###II. The Data
 
-The data were provided by [the instructor](https://twitter.com/rdpeng), and be downloaded [here](http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip). The included variables are as follows:
+The data were provided by [the instructor](https://twitter.com/rdpeng), and can be downloaded [here](http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip). The included variables are as follows:
 
 - **steps**: Number of steps taken in a 5-minute interval
 - **date**: The date on which the measurement was takend in YYYY-MM-DD format
@@ -19,11 +19,11 @@ The data were provided by [the instructor](https://twitter.com/rdpeng), and be d
 
 There are a total of 17,568 observations in the dataset. All missing data were coded as "NA" in the original dataset.
 
-##III. Loading the Data
+###III. Loading the Data
 
 To make this analysis reproducible on other machines, I began by writing a routine in which R downloads and unzips the data (rather than reading it in from a local directory). After reading in the data, the raw dataset is immediately written back into the working directory in a file called "activity.csv". To improve speed, in future runs of the program, R will first check in the working directory to find "activity.csv" and read directly from it.
 
-Please note that my code uses Windows relative path references. I do not know enough computer science to make these relative paths OS-agnostic. If you (the reader/reviewer) do know, please click my name under the title and send me a message with a resource that explains it. I'm always willing to learn more!
+Please note that my code uses Windows relative path references. I do not know enough computer science to make these relative paths OS-agnostic. If you (the reader/reviewer) do know how to do this, please click my name under the title and send me a message with a resource that explains it. I'm always willing to learn more!
 
 
 ```r
@@ -54,7 +54,7 @@ if (file.exists(".\\activity.csv")) {
 }
 ```
 
-###IV. Mean Total Steps
+###IV. Total Daily Steps
 
 With the data downloaded, it was time to start analyzing it. To begin, I wanted to get a sense of the distribution of activity patterns. The code block below expresses some features of the distribution of total steps taken each day. It plots a histogram (Figure 1) and reports the mean and median daily steps taken.
 
@@ -68,7 +68,6 @@ Note that at this point, missing values were simply ignored by the calculations 
 daytotal_df <- aggregate(steps ~ date, data=data, na.rm=FALSE,sum)
 
 ## plot a histogram of the total number of steps taken each day
-
 par(bg = "snow2")
 hist1 <- hist(daytotal_df$steps, 
               main = "Fig. 1 Histogram of Steps Per Day", 
@@ -81,7 +80,7 @@ hist1 <- hist(daytotal_df$steps,
 ```r
 ## calculate the mean and median, round them for cleaner reporting
 mean1 <- round(mean(daytotal_df$steps), digits=0)        
-    mean_text <- as.character(mean1)                     ## character, for human-readable
+    mean_text <- as.character(mean1)                  ## character, for human-readable
 median1 <- round(median(daytotal_df$steps), digits=0)   
     median_text <- as.character(median1)                 ## character, for human-readable
 ```
@@ -92,25 +91,27 @@ In this sample, total daily steps averaged 10766, with a median of 10765.
 
 Next, I took a look at the intraday patterns in walking activity. The code below generates a time-series plot (Figure 2) of average steps taken at each 5-minute interval, averaged across all days in the sample. 
 
-As was fairly noted [on the course forums](https://class.coursera.org/repdata-010/forum/thread?thread_id=11), the notion of "time" on the x-axis is not technically correct. The data are coded as {8:00a = 800, 12:45p = 1245, 11:55p = 2355, etc.}. This means that we are dealing with a non-continuous, non-evenly-spaced measure of time on the x axis. This means that gaps between realizations may distort the time series properties of the data.
+As was fairly noted [on the course forums](https://class.coursera.org/repdata-010/forum/thread?thread_id=11), the notion of "time" on the x-axis is not technically correct. The data are coded as {8:00a = 800, 12:45p = 1245, 11:55p = 2355, etc.}. This means that we are dealing with a non-continuous, non-evenly-spaced measure of time on the x axis. In other words, gaps between realizations may distort the apparent time series properties of the data.
 
-In this project, I neglected to make special allowances for this technical note. I feel justified in leaving the time scale as-is for the following reasons:
+In this project, I neglected to make special allowances for this technical note. I felt justified in leaving the time scale as-is for the following reasons:
 
-1. It is not obvious that professor Peng made such adjustments (compare [the example panel plot](https://github.com/JayLamb20/RepData_PeerAssessment1/blob/master/instructions_fig/sample_panelplot.png) with my Figure 4 below)
-2. The goal here is to determine a maximum point, not any time-series characteristics like autocorrelation. The visual representation of the maximum is not affected by the scale distortion.
+1. It was not obvious that professor Peng made such adjustments (compare [the example panel plot](https://github.com/JayLamb20/RepData_PeerAssessment1/blob/master/instructions_fig/sample_panelplot.png) with my Figure 4 below)
+2. The goal here was to determine a maximum point, not any time-series characteristics like autocorrelation. The visual representation of the maximum was not affected by the scale distortion.
 
 
 ```r
 ###---Figuring Out Interday Averages at Each Interval---###
 
-# convert interval (currently factor) into numeric (for correct sorting)
+## convert interval (currently factor) into numeric (for correct sorting)
 data$intnum <- as.numeric(as.character(data$interval))
 
-#create a new dataframe, taking averages by interval
+## create a new dataframe, taking averages by interval
 mintotal_df <- aggregate(steps ~ intnum, data=data, mean)
 
+## set plotbackground color to light white/gray
 par(bg = "snow2")
-#create a time series plot of average steps taken
+
+## create a time series plot of average steps taken
 plot(mintotal_df$intnum, 
      mintotal_df$steps,
      type = "l",
@@ -123,32 +124,28 @@ plot(mintotal_df$intnum,
 <img src="./PA1_template_files/figure-html/sec5dailyactivity.png" title="plot of chunk sec5dailyactivity" alt="plot of chunk sec5dailyactivity" style="display: block; margin: auto;" />
 
 ```r
+## calculate maximum average steps taken
 max1 <- max(mintotal_df$steps)
     max1_text <- round(max1, 0)
 max1_int <- mintotal_df[mintotal_df$steps==max1,1] #interval with highest average steps
 
-#convert interval into human readable time (e.g. 800 = "8:00 a.m.")
-
+## convert interval into human readable time (e.g. 800 = "8:00 a.m.")
 if(nchar(as.character(max1_int))==1) {
     max1_int_text <- paste("12:0", as.character(max1_int), " a.m.", sep="")
 } 
-
 if(nchar(as.character(max1_int))==2) {
     max1_int_text <- paste("12:", as.character(max1_int), " a.m.", sep="")
 } 
-
 if(nchar(as.character(max1_int))==3) {
     max1_int_text <- paste(substr(as.character(max1_int),1,1)
                            , ":",substr(as.character(max1_int),2,3), 
                            " a.m.", sep="")
 } 
-
 if(nchar(as.character(max1_int))==4 & max1_int <= 1155) {
     max1_int_text <- paste(substr(as.character(max1_int),1,2)
                            , ":",substr(as.character(max1_int),3,4), 
                            " a.m.", sep="")
 }
-
 if(nchar(as.character(max1_int))==4 & max1_int >= 1200) {
     max1_int_text <- paste(substr(as.character(max1_int),1,2)
                            , ":", substr(as.character(max1_int),3,4), 
@@ -223,19 +220,21 @@ Figure 3 above shows the distribution of interday mean step counts at each 5-min
 
 Unsurprisingly, this distribution is nearly identical (in central tendency) to the one calculated with missing values dropped. In the new dataset, with NAs replaced using mean imputation, the mean is 10766 and the median is 10766. 
 
-I chose imputation precisely for this reason (the preservation of central tendency). There was one additional concern that needed to be addressed, though. *What is the impact of imputing missing data on the estimates of the total daily number of steps?*
+I chose mean imputation precisely for this reason (the preservation of central tendency). There was one additional concern that needed to be addressed, though. *What is the impact of imputing missing data on the estimates of the total daily number of steps?*
 
 This "impact" would be felt more acutely in a regression setting, but in this exploratory phase I felt that looking at some descriptive statistics might be an informative exercise. The code chunk below gives tables of basic descriptive statistics for the two distributions of step sums.
 
 
 ```r
 ###---Closer Look at the Two Distributions---###
+
+## load the pastecs package, get descriptive stats for both distributinons
 library(pastecs)
 stat_table <- stat.desc(daytotal_df$steps)
 stat_table <- as.data.frame(cbind(stat_table, stat.desc(dimptot$steps)))
 names(stat_table) <- c("original", "W_Imputation")
                     
-## Table of Descriptive Stats (steps)
+## print table of Descriptive Stats (steps)
 stat_table 
 ```
 
@@ -257,9 +256,9 @@ stat_table
 ## coef.var     3.965e-01    3.928e-01
 ```
 
-A few small differences can be seen in the descriptive statistics tables. As expected, the sum of steps for the sample with imputation is slightly higher than in the sample with missing values omitted. Also as could have been expected, the variance and standard deviation of the second distribution was a bit tighter. This is a natural result of adding a bunch of values near the center of the distribution. 
+A few small differences can be seen in the descriptive statistics tables. The sum of steps for the sample with imputation is slightly higher than in the sample with missing values omitted. As could have been expected, the variance and standard deviation of the second distribution was a bit tighter. This is a natural result of adding a bunch of values near the center of the distribution. 
 
-Overall, the differences between the two distributions are not substantial. However, using mean imputation artificially tightens the variance of the distribution, which would pull the regression coefficients toward zero (in absolute value) if we were to do some more sophisticated analysis.
+At first glance, the differences between the two distributions do appear not substantial. However, we must be cautious. Using mean imputation artificially tightens the variance of the distribution, which would pull measure of correlation (like regression coefficients) between steps and some other variable toward zero.
 
 ###VII. Are There Differences in Activity Patterns Between Weekdays and Weekends?
 
