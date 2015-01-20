@@ -42,5 +42,93 @@
 - the goal here is just for personal understanding of the data
 - axes/legends cleaned up later
 - color/size are primarily used for information
-- 
 
+**B. Some Basic Tools**
+
+- Five-number summary --> ```summary(x)```
+- boxplots   --> ```boxplot(x, col="blue")```
+- histograms --> 
+
+```{r HistExample, echo=TRUE, eval=FALSE}
+## Make a Histogram
+hist(x, col="green", breaks=100)  ## breaks = "number of bars"
+rug(x) ## plot the observations underneath the histogram
+
+abline(v = 12, lwd = 2)  ## add a vertical line at 12, of width 2, to the histogram
+abline(v = median(x), col = "magenta", lwd=4)  ## add another vertical line at the median, make it magenta, line width 4
+```
+
+- boxplot
+
+```{r BoxPlotExample, echo=TRUE, eval=FALSE}
+## Make a Boxplot with a horizontal line at the point of interest
+boxplot(x, col="blue")
+abline(h = 12) ## add a horizontal line at 12
+```
+
+- barplot --> 
+
+```{r BarPlotExample, echo=TRUE, eval=FALSE}
+## Simple Bar Plot
+barplot(table(x), col = "wheat", main = "Number of Counties in Each Region")
+```
+
+####*Video 1.4 Exploratory Graphs (pt 2)*
+
+**A. Simple Summaries of Data**
+
+- Two dimensions
+    - multiple/overlayed 1-D plots (Lattice/ggplot2)
+    - scatterplots
+    - smooth scatterplots
+- >2 dimensions
+    - overlayed/multiple 2-D plots; coplots
+    - use color, size, shape to add dimensions
+    - spinning plots
+    - actual 3-D plots (not that useful)
+    
+**B. Some Examples**
+
+- multiple boxplots
+
+```{r MultiBoxExample, echo=TRUE, eval=FALSE}
+## make side-by-side boxplots
+boxplot(x ~ some_factor, data=dataset, col="red")
+```
+
+- stacked histograms
+
+```{r MultiHistExample, echo=TRUE, eval=FALSE}
+## make two histograms and stack them on each other
+par(mfrow = c(2,1), mar = c(4,4,2,1)) ## change this to a two-row, 1 column plotting panel
+hist(subset(x, region == "east"), col = "green"))
+hist(subset(x, region == "west"), col = "green"))
+```
+
+- scatterplot with a horizontal dashed line
+
+```{r DashLineExample, echo=TRUE, eval=FALSE}
+## the scatterplot
+with(pollution, plot(latitude, pm25, col = region)) ## you can color the points using some factor
+
+## the dashed line
+abline(h = 12, lwd = 2, lty = 2)
+```
+
+- panel of scatterplots
+
+```{r BarPlotExample, echo=TRUE, eval=FALSE}
+## set the graphical options
+par(mfrow = c(1,2), mar = c(5,4,2,1))
+
+## make each plot
+with(subset(pollution, region == "west"), plot(latitude, pm25, main = "West"))
+with(subset(pollution, region == "east"), plot(latitude, pm25, main = "east"))
+```
+
+**C. Summary**
+
+- these plots are meant to be quick and dirty
+- they let you summarize the data and highlight any broad features of interest
+- you can explore basic questions and hypotheses (maybe ruling them out)
+- see also [R Graph Gallery](http://rgraphgallery.blogspot.com/)
