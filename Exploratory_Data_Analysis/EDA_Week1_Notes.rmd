@@ -1,0 +1,46 @@
+<center> <h2>Exploratory Data Analysis - Week 1</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Video 1.1 Introduction*
+
+**A. What the Class is About **
+
+- this is about exploratory (pre-inference) analysis
+
+####*Video 1.2 Principles of ANalytic Graphics*
+
+**A. General Rules**
+
+1. Show comparisons
+    - evidence for a hypothesis is always relative to another, competing hypothesis
+2. Show causality, mechanism, explanation, systematic structure
+    - how is the system operating? How does the world work?
+    - what is your "causal framework"?
+3. Show multivariate data
+    - show as much on a single plot as you can
+    - "the real world is multivariate"
+    - need to "escape flatland"
+4. Integration of evidence
+    - data graphics should make use of many modes of data presentation
+    - don't let the tool (graphic device) drive the analysis
+5. Describe and document the evidence with appropriate labels, scales, sources, etc.
+    - a data graphic shoud tell a cmplete story that is credible
+    - keep the code that made the plot
+6. Content is king
+    - if your story isn't interesting, graphs won't magically make it more interesting
+    - start with the data and the story, then choose the appropriate plots
+    
+####*Video 1.3 Exploratory Graphs (pt 1)*
+
+**A. What are Exploratory Graphs?**
+
+- pretty much made for yourself
+- why use them?
+    - find patterns, understand properties, suggest modeling strategies
+    - debug analysis
+- made quickly, a large number are made
+- the goal here is just for personal understanding of the data
+- axes/legends cleaned up later
+- color/size are primarily used for information
+- 
+
