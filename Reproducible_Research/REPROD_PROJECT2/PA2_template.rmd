@@ -1,0 +1,38 @@
+---
+output:
+    html_document:
+        theme: cerulean
+        fig_width: 6
+        fig_height: 5
+        keep_md: true
+---
+
+<center> <h2>Reproducible Research - Project 1</h2> </center>
+<center> By [James Lamb](http://www.linkedin.com/in/jameslamb1/)</center>
+<center>-----------------------------------------------------------------------------------------------------------------------------------------------------</center>
+
+###I. Introduction
+
+This is a brief project prepared in partial fulfillment of the requirements for the [Reproducible Research](https://class.coursera.org/repdata-010) course offered by Johns Hopkins University via Coursera, as part of the JHU Data Science Specialization. 
+
+[1] http://stackoverflow.com/questions/25948777/extract-bz2-file-in-r
+
+
+```{r sec1getdata}
+## Define a function to download a bzip2-compressed csv from the internet, read it in to R                       
+read.bzip2csv <- function(url, file, header = TRUE, sep = ",", stringsAsFactors = FALSE){
+    
+    ## download the data
+    download.file(url, destfile = file) #note that we use one arg, "file", for destfile and later for the read in to R
+    
+    ## read the data into R
+    data1 <- read.csv(file = file, header = header, sep = sep, stringsAsFactors = stringsAsFactors)
+   
+    ## print output message to the console
+    out_string <- "Data downloaded succesfully, read into R, and stored in object data1."
+    out_string
+}
+
+## Read in the data for this project
+read.bzip2csv(url= "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2", file = ".\\SStormdata.csv.bz2", sep = ",", header = TRUE, stringsAsFactors = FALSE)
+```
