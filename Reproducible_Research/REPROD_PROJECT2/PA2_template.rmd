@@ -12,7 +12,7 @@ output:
 <center>-----------------------------------------------------------------------------------------------------------------------------------------------------</center>
 
 ###I. Introduction
-
+asdfasdf
 This is a brief project prepared in partial fulfillment of the requirements for the [Reproducible Research](https://class.coursera.org/repdata-010) course offered by Johns Hopkins University via Coursera, as part of the JHU Data Science Specialization. 
 
 [1] http://stackoverflow.com/questions/25948777/extract-bz2-file-in-r
