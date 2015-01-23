@@ -26,7 +26,7 @@ There are a total of 359,191 observations in the dataset. All missing data were 
 [1] http://stackoverflow.com/questions/25948777/extract-bz2-file-in-r
 
 
-```{r sec1getdata}
+```{r sec1getdata, echo=TRUE, eval=TRUE, cache=TRUE, message=FALSE, warning=FALSE}
 ## Define a function to download a bzip2-compressed csv from the internet, read it in to R                       
 read.bzip2csv <- function(url, file, header = TRUE, sep = ",", stringsAsFactors = FALSE){
     
@@ -38,7 +38,7 @@ read.bzip2csv <- function(url, file, header = TRUE, sep = ",", stringsAsFactors 
         }
     
     ## read the data into R
-    data1 <<- read.csv(file = file, header = header, sep = sep, stringsAsFactors = stringsAsFactors)
+    data1 <<- read.csv(file = file, header = header, sep = sep, stringsAsFactors = stringsAsFactors, strip.white=TRUE)
    
     ## print output message to the console
     out_string <- "Data downloaded succesfully, read into R, and stored in object data1."
@@ -46,10 +46,88 @@ read.bzip2csv <- function(url, file, header = TRUE, sep = ",", stringsAsFactors 
 }
 
 ## Read in the data for this project
-read.bzip2csv(url= "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2", file = ".\\SStormdata.csv.bz2", sep = ",", header = TRUE, stringsAsFactors = FALSE)
+read.bzip2csv(url= "http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2", file = ".\\SStormdata.csv.bz2", sep = ",", header = TRUE, stringsAsFactors = FALSE)
 ```
+
+Next, I took some steps to clean the data. To begin, I looked at the unique values of ```EVTYPE``` to see how things could be condesned/combined.
+
+```{r sec1bclean, echo=TRUE, cache=TRUE, message=FALSE, warning=FALSE}
+## Check unique values of EVTYPE
+freqtable1 <- table(data1$EVTYPE)
+freqtable1
+
+## Calculate number of uniques
+unique_evtype1 <- length(unique(data1$EVTYPE))
+```
+
+This initial analysis revealed ```r unique_evtype1``` unique values for EVTYPE, an order of magnitude larger than the 48 types listed on pgs. 3-4 of the documentation. To address this issue, I first took the obvious steps: removing leading/ending spaces, reducing double spaces to single spaces, and changing the values of ```EVYTPE``` to upper-case.
+
+```{r sec1cclean, echo=TRUE, cache=TRUE, message=FALSE, warning=FALSE}
+## copy event type, work with copy
+data1$EVTYPE2 <- data1$EVTYPE
+
+## trim spaces, change multiple consecutive spaces to single space, change to upper-case
+cleanup <- function (x) {
+    x <- toupper(x) ## change to uppercase
+    gsub("^\\s+|\\s+$","", x) ## replace leading/lagging spaces
+    gsub("  "," ", x) ##replace double spaces with single spaces
+    }
+data1$EVTYPE2 <- cleanup(x=data1$EVTYPE2)
+unique_evtype2 <- length(unique(data1$EVTYPE2)) ## CHANGE BACK TO EVTYPE later
+
+## remove all numbers, run cleanup again
+data1$EVTYPE2 <- gsub("[0-9]","",data1$EVTYPE2)
+data1$EVTYPE2 <- cleanup(x=data1$EVTYPE2)
+unique_evtype3 <- length(unique(data1$EVTYPE2))
+
+## remove special characters {(,),-,}
+
+data1$EVTYPE2 <- toupper(trim(x=data1$EVTYPE2))
+unique4 <- length(unique(data1$EVTYPE2))
+
+##remove special characters
+library(stringr) ## MOVE ALL LIBRARY LOADS TO THE TOP??
+rm_specials <- function(x, chars= {
+    
+    if (class(chars)!="character") stop('Error: char expected a character string. For example, try something like chars=c("a","b","c")'
+    
+    ## coerce chars to a list                                    
+    chars = str_split(chars, " ", n= Inf) 
+    
+    ## remove whatever characters you fed to the function
+    for (i in 1:length(chars)){
+        gsub(chars[i],"",x)
+    }  
+
+## Condense
+indx <- grep("SUMMARY*", data1$EVTYPE2)  ## find all the rows where EVTYPE contains "SUMMARY"
+data1[indx,]$EVTYPE2 <- "SUMMARY"  ## replace all values of EVTYPE containing "SUMMARY" with just "SUMMARY"
+
+
+```
+
+After changing al lthe values of EVTYPE to a single case, we are left with ```r unique_evtype2``` unique cases.
 
 ###III. White Types of Events are Most Harmful with Respect to Population Health?
 
+- Level 1:
+    - line chart of damage/(year/quarter/month) by event type
+    - Overlapping distributions of event types? 
+
 
 ###IV. Which Types of Events Have the Greatest Economic Consequences?
+
+###REFERENCES
+
+[1] https://stat.ethz.ch/R-manual/R-devel/library/base/html/chartr.html
+
+[2] http://www.statmethods.net/stats/frequencies.html
+
+[3] http://stackoverflow.com/questions/19890633/r-produces-unsupported-url-scheme-error-when-getting-data-from-https-sites
+
+[4] http://stackoverflow.com/questions/17185550/removing-certain-pattern-from-a-string
+
+[4] https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html
+
+[6] http://www.inside-r.org/packages/cran/stringr/docs/str_split
+
