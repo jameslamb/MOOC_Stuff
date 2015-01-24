@@ -80,26 +80,79 @@ data1$EVTYPE2 <- gsub("[0-9]","",data1$EVTYPE2)
 data1$EVTYPE2 <- cleanup(x=data1$EVTYPE2)
 unique_evtype3 <- length(unique(data1$EVTYPE2))
 
-## remove special characters {(,),-,}
-
-data1$EVTYPE2 <- toupper(trim(x=data1$EVTYPE2))
-unique4 <- length(unique(data1$EVTYPE2))
+## let's see the errors
+c(unique_evtype1, unique_evtype2, unique_evtype3)
 
 ##remove special characters
 library(stringr) ## MOVE ALL LIBRARY LOADS TO THE TOP??
-rm_specials <- function(x, chars= {
+rm_specials <- function(x, chars=c("-", "\\(", "\\)", "\\.")) {
     
-    if (class(chars)!="character") stop('Error: char expected a character string. For example, try something like chars=c("a","b","c")'
+    if (class(chars)!="character") stop('Error: char expected a character string. For example, try something like chars=c("a","b","c")')
     
     ## coerce chars to a list                                    
-    chars = str_split(chars, " ", n= Inf) 
+    chars <<- str_split(chars, " ", n= Inf) 
     
-    ## remove whatever characters you fed to the function
+    ## remove hatever characters you fed to the function
     for (i in 1:length(chars)){
-        gsub(chars[i],"",x)
-    }  
+        x <- gsub(chars[[i]],"",x)
+    }
+    
+    ## clean it up afterward
+    x <- cleanup(x)
+    
+    return(x)
+}
 
-## Condense
+data1$EVTYPE2 <- rm_specials(x=data1$EVTYPE2, chars=c("\\-", "\\(", "\\)", "\\."))
+unique_evtype4 <- length(unique(data1$EVTYPE2))
+
+## Condense stuff. Change all strings containing a word to that word
+
+rationalize <- function(x, strings) {
+    
+    if (class(strings)!="character") stop('Error: condense_it expected strings to be a character string. For example, try something like chars=c("a","b","c")')
+    
+    ## remove hatever characters you fed to the function
+    for (i in 1:length(strings)){
+        
+        indx <- grep(strings[i], x)  ## get an index of locations containing this string
+        x[indx] <- strings[i]
+    }
+    
+    ## clean it up afterward
+    x <- cleanup(x)
+    return(x)
+}
+
+data1$EVTYPE2 <- rationalize(x=data1$EVTYPE2, strings=c("ASTRONOMICAL LOW TIDE", "AVALANCE", "BLIZZARD", "COASTAL FLOOD", "COLD/WIND CHILL", "DEBRIS FLOW", "DENSE FOD", "DENSE SMOKE", "DROUGHT", "DUST DEVEIL", "DUST STROM", "DROUGHT", "DUST DEVIL", "DUST STORM", "EXCESSIVE HEAT", "EXTREME COLD/WIND CHILL", "FLASH FLOOD", "FLOOD", "FREEZING FOG", "FROST/FREEZE", "FUNNEL CLOUD", "HAIL", "HEAT", "HEAVY RAIN", "HEAVY SNOW", "HIGH SURF", "HIGH WIND", "HURRICANE/TYPHOON", "ICE STORM", "LAKESHORE FLOOD", "LAKE-EFFECT SNOW", "LIGHTNING", "MARINE HAIL", "MARINE HIGH WIND", "MARINE STRONG WIND", "MARINE THUNDERSTORM WIND", "RIP CURRENT", "SEICHE", "SLEET", "'STORM TIDE", "STRONG WIND", "THUNDERSTORM WIND", "TORNADO", "TROPICAL DEPRESSION", "TROPICAL STORM", "TSUNAMI", "VOLCANIC ASH", "WATERSPROUT", "WILDFIRE", "WINTER STORM", "WINTER WEATHER", "SUMMARY"))
+unique_evtype5 <- length(unique(data1$EVTYPE2))
+
+## Address some special cases
+
+rationalize2 <- function(x,lookup, replacement) {
+    
+    ## take the [i] value from lookup, replace the whole string with [i] from replacement
+    if (class(lookup)!="character") stop('Error: condense_it expected find to be a character string. For example, try something like chars=c("a","b","c")')
+    
+     if (class(replacement)!="character") stop('Error: condense_it expected find to be a character string. For example, try something like chars=c("a","b","c")')
+    
+    ## coerce chars to a list                                    
+    strings <- str_split(strings, " ", n= Inf) 
+    
+    ## remove hatever characters you fed to the function
+    for (i in 1:length(strings)){
+        
+        indx <- grep(strings[i], x)  ## get an index of locations containing this string
+        x[indx] <- gsub(lookup[i],replacement[i],x)
+    }
+    
+    ## clean it up afterward
+    x <- cleanup(x)
+    return(x)
+}
+
+data1$EVTYPE2 <- rationalize2(x=DATA1$EVTYPE2, lookup = c("HURRICANE", "TYPHOON", "VOLCAN"), replacement = c("HURRICANE/TYPHOON", "HURRICANE/TYPHOON", "VOLCANIC ASH"))
+
 indx <- grep("SUMMARY*", data1$EVTYPE2)  ## find all the rows where EVTYPE contains "SUMMARY"
 data1[indx,]$EVTYPE2 <- "SUMMARY"  ## replace all values of EVTYPE containing "SUMMARY" with just "SUMMARY"
 
