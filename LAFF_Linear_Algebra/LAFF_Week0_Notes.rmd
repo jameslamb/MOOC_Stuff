@@ -1,0 +1,61 @@
+<center> <h2>Linear Algebra (LAFF)- Week 0</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*The MATLAB Environment*
+
+**A. Starting Up**
+
+- You can execute commands directly from the "command window"
+- created variables on the right ("workspace")
+- to create a script, click the "new script" button to open the MATLAB editor
+- you can run scripts right from this editor
+- active programs in this directory will be shown under "Current Folder" on the left
+
+####*MATLAB Variables*
+
+**A. Intro to Variables**
+
+- you have to start by defining variables
+- the single equal sign is the assignment operator
+    -" the value on left is evaluated, then assigned to the thing on the left"
+- variable names are case-sensitive and must start with a letter
+- there are some system variables, for exampe ```pi```
+- If matlab does not recognize the value on the RHS, it will error
+- MATLAB evaluates line-by-line in sequental order
+- a MATLAB command may be terminated with a semicolon
+    - this suppresses output from MATLAB
+- useful tips:
+    - define data with square brackets --> ```x = [1 2 3 4]```
+    - define functions of args with parentheses --> ```ans1 = mean(x)```
+    - the comment character is the ```%``` character
+    
+####*MATLAB As a Calculator*
+
+**A. MATLAB Representations of Mathematical Operators**
+
+- be conscious of orders of operation
+    - use parentheses carefully
+- you can use the function ```exp(x)``` to compute an exponential function
+
+####*Video 0.4.1 The Origin of MATLAB*
+
+**A. The Origins**
+
+- JH Wilkinson - mathematician in UK (built "Pilot Ace" computer in 1950s)
+    - world's leading authority on matrix calculation in his time
+- George Forsythe, John & Olga Todd --> UCLA math
+- writing code --> "Algorithms + Data Structures = Programs" Niklaus Wirth
+    - design of a parser for data types
+- the first MATLAB was about 2000 lines of Fortran
+- founder: "Cleve Moler"
+- 80 functions in first version...8000 now
+- MATLAB started as a simple matrix calculator
+- Jack Little at Stanford saw potential of MATLAB for signal processing and control theory
+    - Jack Little and Cleve Moler founded Matlab in early 80s
+- 
+
+
+
+
+
+
