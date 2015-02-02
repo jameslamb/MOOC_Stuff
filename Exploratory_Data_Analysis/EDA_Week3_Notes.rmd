@@ -1,0 +1,50 @@
+<center> <h2>Exploratory Data Analysis - Week 3</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Video 3.1 Hierarchical Clustering (pt 1)*
+
+**A. **
+
+####*Video 3.2 Hierarchical Clustering (pt 2)*
+
+**A. **
+
+####*Video 3.3 Hierarchical Clustering (pt 3)*
+
+**A. **
+
+####*Video 3.4 K-Means Clustering (pt 1)*
+
+**A. **
+
+####*Video 3.5 K-Means Clustering (pt 2)*
+
+**A. **
+
+####*Video 3.6 Dimension Reduction (pt 1)*
+
+**A. **
+
+####*Video 3.7 Dimension Reduction (pt 2)*
+
+**A. **
+
+####*Video 3.8 Dimension Reduction (pt 3)*
+
+**A. **
+
+####*Video 3.9 Working with Color in R Plots (pt 1)*
+
+**A. **
+
+####*Video 3.10 Working with Color in R Plots (pt 2)*
+
+**A. **
+
+####*Video 3.11 Working with Color in R Plots (pt 3)*
+
+**A. **
+
+####*Video 3.12 Working with Color in R Plots (pt 4)*
+
+**A. **

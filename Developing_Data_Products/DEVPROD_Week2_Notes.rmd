@@ -1,0 +1,42 @@
+<center> <h2>Developing Data Products - Week 2</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Video 2.1 Presenting Data Analysis Writing a Data Report*
+
+**A. **
+
+####*Video 2.2 Slidify Intro*
+
+**A. **
+
+####*Video 2.3 Slidify working it out*
+
+**A. **
+
+####*Video 2.4 Slidify customization*
+
+**A. **
+
+####*Video 2.5 Slidify more details*
+
+**A. **
+
+####*Video 2.6 Slidify reminder about knitting R*
+
+**A. **
+
+####*Video 2.7 RStudio Presenter 1 Introduction and getting started*
+
+**A. **
+
+####*Video 2.8 RStudio Presenter 2 Authoring details*
+
+**A. **
+
+####*Video 2.9 RStudio Presenter 3 DIscussion and comparison with Slidify*
+
+**A. **
+
+####*Video 2.10 Very quick introduction to gh-pages*
+
+**A. **

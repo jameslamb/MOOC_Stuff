@@ -1,0 +1,38 @@
+<center> <h2>Predictive Machine Learning - Week 2</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Video 2.1 Caret package*
+
+**A. **
+
+####*Video 2.2 Data slicing*
+
+**A. **
+
+####*Video 2.3 Training options*
+
+**A. **
+
+####*Video 2.4 Plotting predictions*
+
+**A. **
+
+####*Video 2.5 Basic preprocessing*
+
+**A. **
+
+####*Video 2.6 Covariate creation*
+
+**A. **
+
+####*Video 2.7 Preprocessing with principal components analysis*
+
+**A. **
+
+####*Video 2.8 Predicting with regression*
+
+**A. **
+
+####*Video 2.9 Predicting with Regression Multiple Covariates*
+
+**A. **

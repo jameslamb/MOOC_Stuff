@@ -1,0 +1,74 @@
+<center> <h2>Developing Data Products - Week 1</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Video 1.1 Introduction to Data Products*
+
+**A. **
+
+####*Video 1.2 Motivating Shiny*
+
+**A. **
+
+####*Video 1.3 Shiny 1 Introduction to Shiny*
+
+**A. **
+
+####*Video 1.4 Shiny 2 basic html and getting input*
+
+**A. **
+
+####*Video 1.5 Shiny 3 Creating a very basic prediction function*
+
+**A. **
+
+####*Video 1.6 Shiny 4 Working with images*
+
+**A. **
+
+####*Video 1.7 Shiny 5 Discussion*
+
+**A. **
+
+####*Video 1.8 More advanced shiny discussion, reactivity*
+
+**A. **
+
+####*Video 1.9 More advanced shiny, the reactive function*
+
+**A. **
+
+####*Video 1.10 More advanced shiny, odds and ends*
+
+**A. **
+
+####*Video 1.11 Manipulate*
+
+**A. **
+
+####*Video 1.12 Intro to rCharts and GoogleVis*
+
+**A. **
+
+####*Video 1.13 rCharts introduction*
+
+**A. **
+
+####*Video 1.14 rCharts more examples*
+
+**A. **
+
+####*Video 1.15 rCharts mapping and discussion*
+
+**A. **
+
+####*Video 1.16 GoogleVis*
+
+**A. **
+
+####*Video 1.17 shinyApps.io*
+
+**A. **
+
+####*Video 1.18 plotly*
+
+**A. **

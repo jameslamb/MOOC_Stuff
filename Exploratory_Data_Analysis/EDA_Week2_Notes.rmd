@@ -1,0 +1,30 @@
+<center> <h2>Exploratory Data Analysis - Week 2</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Video 2.1 Lattice Plotting System (pt 1)*
+
+**A. **
+
+####*Video 2.2 Lattice Plotting System (pt 2)*
+
+**A. **
+
+####*Video 2.3 ggplot2 (pt 1)*
+
+**A. **
+
+####*Video 2.4 ggplot2 (pt 2)*
+
+**A. **
+
+####*Video 2.5 ggplot2 (pt 3)*
+
+**A. **
+
+####*Video 2.6 ggplot2 (pt 4)*
+
+**A. **
+
+####*Video 2.7 ggplot2 (pt 5)*
+
+**A. **

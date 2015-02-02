@@ -1,0 +1,38 @@
+<center> <h2>Predictive Machine Learning - Week 1</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Video 1.1 Prediction motivation*
+
+**A. **
+
+####*Video 1.2 What is prediction?*
+
+**A. **
+
+####*Video 1.3 Relative importance of steps*
+
+**A. **
+
+####*Video 1.4 In and out of sample errors*
+
+**A. **
+
+####*Video 1.5 Prediction study design*
+
+**A. **
+
+####*Video 1.6 Types of errors*
+
+**A. **
+
+####*Video 1.7 Receiver Operating CHaracteristic*
+
+**A. **
+
+####*Video 1.8 Cross validation*
+
+**A. **
+
+####*Video 1.9 What data should you use?*
+
+**A. **

@@ -1,0 +1,6 @@
+<center> <h2>Developing Data Products - Week 1</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Video 1.1 Regularized regression*
+
+**A. **
