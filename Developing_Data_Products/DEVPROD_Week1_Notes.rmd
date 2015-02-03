@@ -3,15 +3,62 @@
 
 ####*Video 1.1 Introduction to Data Products*
 
-**A. **
+**A. What is a Data Product?**
+
+- an app, software, reproducible report based on data
+- an R package would be a reproducible report too
+
+**B. What We'll learn**
+
+- How to use RStudio presenter
+- a shiny app (web app)
+- rCharts and interactive graphics
 
 ####*Video 1.2 Motivating Shiny*
 
-**A. **
+**A. Three Problems**
+
+- your software is hard to use
+    - create an R package for installation?
+- you want numbers updated automatically every month?
+    - create a slidify presentation that pulls in new numbers
+- web app for a prediction function?
+    - make a Shiny app (even though you have minimal web app skills)
 
 ####*Video 1.3 Shiny 1 Introduction to Shiny*
 
-**A. **
+**A. What is Shiny?**
+
+- a platform for creating interactive R programs in a web page
+- put up an algorithm where people can pick and click to use it
+- use Shiny to create simple, yet powerful, web-based interactive data products in R
+    - minimal dev cost
+- Shiny is made by R Studio
+
+**B. Some Mild Prerequisites**
+
+- a little knowledge of html, css and js is very helpful
+    - know html at the bare minimum
+    - html gives web page structure and sectioning
+    - css gives the style
+    - js (JavaScript) gives you interactivity
+- there are tons of tutorials online for these things
+- Shiny uses bootstrap style (it looks nice, even on mobile)
+
+**C. What Else is out there?**
+
+- creating any solution requiring fairly deep knowledge of web client/server programming
+- OpenCPU is a really neat project providing an API for calling R from web documents
+    - he even hosts an OpenCPU server, but you can create your own
+- you need a lot more knowledge of web programming for this
+
+**D. Context**
+
+- you created some stuff, let users on a website put in data and see what comes out
+
+**E. Getting Started**
+
+- install R
 
 ####*Video 1.4 Shiny 2 basic html and getting input*
 
