@@ -183,12 +183,220 @@ treebag <- bag(predictors, temperature, B = 10,
     - Elements of Statistical Learning (link)
 ####*Video 3.3 Random Forests*
 
-**A. **
+**A. Basic Ideas**
+
+- similar to bagging
+    1. bootstrap samples (then run regression trees)
+    2. at each split, bootstrap variables
+    3. Grow lots of trees and vote
+- Pros:
+    - very accurate
+- cons:
+    - speed
+    - interpretability
+    - overfitting (very important to use cross-validation)
+    
+**B. How it works in practice**
+
+- build trees on random subsamples (bootstrapped samples)
+
+```{r sec4rando, eval=FALSE}
+data(iris); library(ggplot2)
+inTrain <- createDataPartition(y=iris$Species, p=0.7, list=FALSE)
+training <- iris[inTrain,]
+testing <- iris[-inTrain,]
+
+## Let's set up the random forest prediction
+
+library(caret)
+
+## use method=rf for random forest to predict the outcome variable, Species. Prox=true produces some extra info
+modFit <- train(Species ~., data=training, method="rf", prox=TRUE)
+
+## LOok at a specific tree in the final model
+getTree(modFit$finalModel, k=2)
+
+## use the "centers" info to get class centers
+irisP <- classCenter(training[,c(3,4)], training$Species, modFit$finalModel$prox) ## get center value for each class
+irisP <- as.data.frame(irisP); irisP$Species <- rownames(irisP)
+p <- qplot(Petal.Width, Petal.Length, col=Species, data=training) ## plot the observed data, coloring by species
+p + geom_point(aes(x=Petal.Width, y = Petal.Length, col=Species), size = 5, shape=4, data=irisP) ## plot the data centers for each class, as X's
+
+##get some predictions
+pred <- predict(modFit, testing)
+testing$predRight <- pred==testing$Species ## subset out all the ones you correctly predicted
+table(pred,testing$Species) ## table of predicted vs. actual. (predictions down column)
+
+## plot the predictions (color by whether or not you predicted accurately, see where mistakes lie)
+qplot(Petal.Width, Petal.Length, colour=predRight, data=testing, main="newdata Predictions")
+```
+
+**C. Notes and further resources**
+
+- Notes:
+    - random forests are usually one of the two top performing algorithms along with boosting in prediction constests
+    - random forests are difficult to interpret but often very accuract
+    - care should be taken to avoid overfitting (see rfcv function) -- train() in caret will also handle cross-validation
 
 ####*Video 3.4 Boosting*
 
-**A. **
+**A. Basic Idea**
+
+- take lots of possibly weak predictors
+- weight them and add them up
+- get a stronger predictor
+
+**B. Basic Idea (cont.)**
+
+1. Start with a set of of classifiers
+    - example: all possible trees, all possible regression models, all possible cutoffs
+2. Create a classifier that combines classification functions
+    - goal is to minimize error (on training set)
+    - iterative, select one h at each step
+    - calculate weights based on errors
+    - upweight missed classifications and select next h
+- see links to other resources in the slides
+- most famous boosting algorithm is "Adaboost"
+
+**C. Simple Example**
+
+- [Boosting Tutorial](http://webee.technion.ac.il/people/remeir/BoostingTutorial.pdf)
+- you upweight misclassified points so that the next iteration builds a model that attracts them
+- completed classifier...works much better than any individual one, gets a strong weighted classifier
+
+**D. Boosting in R**
+
+- boosting can be used with any subset of classifiers
+- one large subclass is [gradient boosting](http://en.wikipedia.org/wiki/Gradient_boosting)
+    - gradient boosting is a machine learning technique for regression problems, which produces a prediction model in the form of an ensemble of weak prediction models (typically decision trees)
+    - It builds the model in a stage-wise fashion like other boosting methods do, and it generalizes them by allowing optimization of an arbitrary differentiable loss function.
+    - the grdietn boosting method can also be used for classification problems by reducing them to regression with a suitable loss function
+    - gradient boosting is a special case of the functional gradient descent view of boosting
+- R has multiple boosting libraries. Differences include the choice of basic classification functions and combination rules:
+    - gbm - boosting with trees
+    - mboost - model based boosting
+    - ada - statistical boosting based on additive logistic regression
+    - gamBoost - for boosting generalized additive models
+- most of the above libraries are available in the caret package
+    - you can use them directly with the ```train()``` function in caret
+    
+**E. Example in R**
+
+```{r sec5boosting, eval=FALSE}
+## Set up the problem, split the data
+library(ISLR); data(Wage); library(ggplot2); library(caret);
+Wage <- subset(wage, select=-c(logwage)) ## everything except what we care about (wage)
+inTrain <- createDataPartition(y=Wage$wage, p=0.7, list=FALSE)
+training <- Wage[inTrain,]; testing <- Wage[-inTrain,]
+
+## lets use GBM (boosting with regression trees), set verbose=FALSE to suppress all the output
+modFit <- train(wage ~., method="gbm", data=training, verbose=FALSE)  ## wage as a function of everything else
+print(modFit)
+
+## Plot the results
+qplot(predict(modFit,testing), wage,data=testing)
+```
+
+- again, the basic idea:
+    - take these weak classifiers, average them together with weights to get a better classifier
+    
+**F. Notes and further reading**
+
+- A couple of nice tutorials for boosting:
+    - [Freund and Shapire](http://www.cc.gatech.edu/~thad/6601-gradAI-fall2013/boosting.pdf)
+    - [Ron Meir](http://webee.technion.ac.il/people/rmeir/BoostingTutorial.pdf)
+- Boosting, random forests, and model ensembling are the most common tools that win Kaggle and other prediction contests:
+    - [NetFlix Prize](http://www.netflixprize.com/assets/GrandPrize2009_BPC_BigChaos.pdf)
+    - [Kaggle Info](https://kaggle2.blob.core.windows.net/wiki-files/327/09ccf652-8c1c-4a3d-b979-ce2369c985e4/Willem%20Mestrom%20-%20Milestone%201%20Description%20V2%202.pdf)
 
 ####*Video 3.5 Model Based Prediction*
 
-**A. **
+**A. Basic Idea**
+
+1. assume the data follow a probabilistic model
+2. Use Bayes' theorem to identify optimal classifiers
+
+Pros:
+    - can take advantage of structure of the data
+    - may be computationally convenient
+    - are resonably accurate on real problems
+Cons:
+    - make additional assumptions about the data
+    - reduced accuracy if model is incorrect
+    
+**B. Model based Approach**
+
+1. Our goal is to build parametric model for condition distribution
+2. A typical approach is to apply [Bayes theorem](http://en.wikipedia.org/wiki/Bayes%27_theorem)
+3. Typically priors are set in advance
+4. A common choice for f(x) is a Gaussian distribution
+5. Estimate parameters from the data
+6. Classify to the class with the highest value of P(y=k|x=x)
+
+**C. Classifying using the model**
+
+- a range of models use this approach:
+    - [Linear discriminant analysis](http://en.wikipedia.org/wiki/Linear_discriminant_analysis) assumes f~k~(x) is a multivariate Gaussian with same covariances
+        - find a linear combination of features which characterizes or separates two or more classes of objects or evenets. The resultign combination may be used as a linear classifier, or, more commonly, for dimensionality reduction before later classification
+        - draw lines through the covariance space
+    - Quadratic discriminant analysis assumes f~k~(x) is multivariate Gaussian with different covariances
+        - different within each class (quadratic curves through data)
+    - Model based prediction assumes more complicated versions for the covariance matrix
+    - Naive Bayes assumes independence between features for model building
+        - assume predictors are independent
+- [good resource from Stanford](http://statweb.stanford.edu/~tibs/ElemStatLearn/)
+
+**D. Why linear discriminant analysis?**
+
+- key term:
+    - log(Pr(Y = k|X = x)/Pr(Y = j|X = x))
+
+**E. Decision Boundaries**
+
+- [LDA Decision Boundar Example](http://i.stack.imgur.com/YijL7.png)
+- fit multiple Gaussian distribution (one for each class)
+    - draw lines where probability switches from being higher for one class than another
+- fit Guassian distributions
+    - use those to draw lines assigning points to higher posterior probabilities
+
+**F. Discriminant function**
+
+- decide class based on:
+    - pick value of k (class) that gives larges value of the discriminant function
+    - estimated with maximum likelihood
+    
+**G. Naive Bayes**
+
+- Suppose we have many predictors, we would want to model P(Y = k|X~1~...X~m~)
+- We could use Bayes Theorem to get:
+    - Probability that Y is in class K, given observed predictors, is the prior probability Y is in class k times probability of observing all the features (X's) given Y in class k, divided by some scaling constant
+    - this probability is proportional to the prior probability times the probability of the features, given that we're in class k
+- classify by picking largest value of:
+    - prior prob of being in k * prob of predictors given class k
+    - if you assume the predictors are independent, they drop out of the conditioning argument, so you can multiple your prior probability of being in the class by the product of probabilities of observing each feature (given Y in class k)
+    
+**H. R Examples**
+
+```{r sec6LDA, eval=FALSE}
+## load the data
+data(iris); library(ggplot2)
+
+## set up the training and test
+inTrain <- createDataPartition(y=iris$Species, p=0.7, list=FALSE)
+training <- iris[inTrain,]
+testing <- iris[-inTrain,]
+
+## build the LDA model
+modLDA <- train(Species ~., data=training, method="lda")
+modNB <- train(Species ~., data=training, method="nb")
+
+## predictions
+pLDA <- predict(modLDA, testing); pNB <- prediction(modNB, testing)
+
+## table of results:
+table(pLDA, pNB)
+
+## Comparison of Results
+equalPredictions = (pLDA==pNB)
+qplot(Petal.Width, Sepal.Width, colour=equalPredictions,data=testing)  ## plot the predictions, coloring by whether or not the methods agreed
+```
