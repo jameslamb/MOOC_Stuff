@@ -607,8 +607,6 @@ map3$marker(c(51.495, -0.083), bindPopup = "<p> Hi. I am another popup </p>")
 ## show the plot
 map3$show("iframesrc", cdn= TRUE)
 
-plot(map3)
-
 ## slidify stuff
 # map3$save('fig/map3.html', cdn=TRUE)
 # cat('Miframe src="fig/map3.html" width=100%, height=600></iframe>')
