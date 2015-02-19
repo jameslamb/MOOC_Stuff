@@ -293,12 +293,62 @@ model.transform <- function(df){
 }
 
 ## do the prediction
-model.transform <- function(df){
+model.predict <- function(df){
     pollutant(df)
 }
 
 ## deploy to yhat
 yhat.config <- c(username = "jaylamb20@gmail.com",
-                 apikey = "")
+                 apikey = "<api_key>",
+                 env = "http://sandbox.yhathq.com")
+
+## deploy your code to yhat
+yhat.deploy("my_stuff")
 ```
+
+**F. Reminder**
+
+- yhat lets your stuff be accessed via an API
+- you can also build a website or javascript (a web fron-end around this)
+
+**G. Running a Yhat Model on the Web**
+
+- the input code in "Documentation" has to be in JSON (a simple but ugly interface fory our stuff)
+
+**H. Running a yhat Model from R**
+
+- you can access the api from within R
+    - let people call functions from within R without having to share all the data
+    - people interface with your yhat stuff and just get what they need
+- use ```yhat.predict``` to predict on your data
+
+```{r yhatpredict, eval=FALSE}
+## make sure you've configured!
+library(yhatr)
+yhat.config <- c(username = "jaylamb20@gmail.com",
+                 apikey = "<api_key>",
+                 env = "http://sandbox.yhathq.com")
+
+
+## Send your dataframe "df", which just contains RHS variables, to the yhat algorithm "pollutant"
+yhat.predict("pollutant",df)
+
+## this will return a dataframe with the following:
+
+    ## all your right hand side variables
+    ## the model results (predictions)
+```
+
+- this is a really nice, lightweight way to make a prediction function available to people without sharing a huge dataset with them
+
+**I. "Running a yhat model with cURL**
+
+- this is something you can embed in a perl shell
+
+**J. Summary**
+
+- that was three simple ways to access a yhat algorithm
+- There are a bunch of other ways (for example, through a web front end)
+    - you could build a web front end on top of an R-based back end
+    
 
