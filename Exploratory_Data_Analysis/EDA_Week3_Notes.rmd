@@ -3,7 +3,55 @@
 
 ####*Video 3.1 Hierarchical Clustering (pt 1)*
 
-**A. **
+**A. Intro to Hierarchical Clustering**
+
+- the basic idea: how do we define "close" and "far"
+- how do we group things?
+- how do we visualize the grouping?
+- how do we interpret the grouping?
+
+**B. Importance**
+
+- cluster analysis is really really important
+- widely used across many fields
+
+**C. Hierarchical clustering**
+
+- An agglomerative approach
+    - find closest two things
+    - put them together
+    - find next closest
+- requires:
+    - a defined distance
+    - a merging approach (what do you do once you say two things are "close")
+- produces
+    - a tree shwing how close things are to each other
+    - tree = "dendrogram"
+    
+**D. How do we Define close?**
+
+- Most important step (GIGO!!)
+- Distance or similarity
+    - continuous - euclidean distance
+    - continuous - correlation similarity
+    - binary - "Manhattan distance"
+- pick a distance/similarity that makes sense for your problem
+
+**E. Examples - Euclidean**
+
+- square root of squared differences
+
+**F. Hierarchical Clustering - Example**
+
+```{r cluster1}
+set.seed(1234)
+par(mar = c(0, 0, 0, 0))
+x <- rnorm(12, mean = rep(1:3, each = 4), sd = 0.2)
+y <- rnorm(12, mean = rep(c(1, 2, 1), each = 4), sd = 0.2)
+plot(x, y, col = "blue", pch = 19, cex = 2)
+text(x + 0.05, y + 0.05, labels = as.character(1:12))
+```
+
 
 ####*Video 3.2 Hierarchical Clustering (pt 2)*
 
