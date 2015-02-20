@@ -467,7 +467,7 @@ manipulate(myHist(mu), mu=slider(62, 74, step = 0.5))
 require(rCharts)
 haireye = as.data.frame(HairEyeColor) 
 
-## call mPlot for a specific js plotting library (assign the plot to a value)
+## call nPlot for a specific js plotting library (assign the plot to a value)
 n1 <- nPlot(Freq ~ Hair, group = 'Eye', type = 'multiBarChart',
             data = haireye[haireye$Sex=='Male',])
 
@@ -551,6 +551,7 @@ r1$publish('myPlot', host = 'rpubs') ## save to rpubs
 - time series plots with metadata!!!!
 
 ```{r morris, results='asis'}
+library(rCharts)
 data(economics, package="ggplot2")
 econ <- transform(economics, data=as.character(date))
 ## make a line plot of two variable, private savings rate and unemployment(?)
@@ -755,4 +756,28 @@ plot(GTM)
 - plotly is a platform for creating interactive charts and doing analysis
     - focus here is on plotly as it applies to R
 - interaction with specific web platform
-    - 
+
+**B. plotly example**
+
+```{r plotly, eval=FALSE}
+## load data
+load("courseData.rda")
+
+## libraries
+library(plotly); library(ggplot2)
+
+## make a plot
+g <- ggplot(myData, aes(y=enrollment, x=class, fill=offering))
+g <- g + geom_bar(stat = "identity")
+g
+
+## get it into plot.ly
+py <- plotly()
+out <- py$ggplotly(g) ## this will open up a browser window the the plot in it
+out$response$url ## this is the url of the plotly plot
+    ## the plotly plot will be interactive!!
+```
+
+- once the plot is up there, use "save and edit" to change a bunch of features
+- this is a "social graphing platform"
+    - share your graph on facebook and twitter
