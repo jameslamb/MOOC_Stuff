@@ -1,0 +1,99 @@
+<center> <h2>Data Science Capstone - Week 0</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Resource 1: NLP Concepts and Definitions
+
+- [Automatic summarization](https://en.wikipedia.org/wiki/Automatic_summarization) = providing a readable summary of a chunk of text.
+    - often used to provide summaries of text of a known type, such as articles in the financial section of a newspaper.
+- [cache language models]
+- [Constituent parsing]
+- [Coreference resolution](https://en.wikipedia.org/wiki/Coreference) = Identify and understand referential relationships between words. e.g. link pronouns to the nouns they reference. 
+- [corpora](http://en.wikipedia.org/wiki/Text_corpus) = a corpus or text corpus (plural *corpora*) is a large and structured set of texts. They are used to do statistical analysis and hypothesis testing.
+    - from Wikipedia: "the analysis and processing of various types of corpora are also the subject of much work in computational linguistics, speech recognition and machine translation, where they are often used to create hidden Markov models for part of speech tagging and other purposes"
+- [Discourse analysis](https://en.wikipedia.org/wiki/Discourse_analysis) = Essentially, this is the task of understanding the discourse structure of connected text. So, for example, you might be interested in classifying sentences as elaboration, explanation, or contrast. Discourse analysis might also include recognition of speech acts like yes-no questions, content questions, statements, and assertions
+- [frequency list](http://en.wikipedia.org/wiki/Word_lists_by_frequency) = a list of a language's words grouped by frequency of occurrence within some given text corpus, either by levels or as a ranked list
+- [Hidden Markov Models]
+- [Machine translation](https://en.wikipedia.org/wiki/Machine_translation) = The task of automatically translating text from one language into another. This problem is "AI-complete", in the sense that it requires all of the the different types of human knowledge to solve correctly. 
+- [maxent classifiers]
+- [Morpheme](https://en.wikipedia.org/wiki/Morpheme) = The smallest grammatical unit in a language. These may be free (i.e. stand alone as words, e.g. "town", "dog") or bound (i.e. appear only as word parts, e.g. "un-", "-able")
+- [Morphological segmentation](https://en.wikipedia.org/wiki/Morphology_(linguistics)) = The task of breaking words down into their component morphemes and classifying those morphemes. English morphology is so simple that this is often unnecessary for English corpora.
+- [naive bayes classifiers]
+- [Named entity recognition (NER)](https://en.wikipedia.org/wiki/Named_entity_recognition)
+- [n-gram modeling]
+- [Natural language generation](https://en.wikipedia.org/wiki/Natural_language_generation)
+- [Natural language search](https://en.wikipedia.org/wiki/Natural_language_user_interface)
+- [Natural language understanding](https://en.wikipedia.org/wiki/Natural_language_understanding)
+- [Optical character recognition](https://en.wikipedia.org/wiki/Optical_character_recognition)
+- [Part-of-speech tagging](https://en.wikipedia.org/wiki/Part-of-speech_tagging)
+- [Parsing](https://en.wikipedia.org/wiki/Parsing)
+- [probabilistic dependency]
+- [Query expansion](https://en.wikipedia.org/wiki/Query_expansion)
+- [Question Answering](https://en.wikipedia.org/wiki/Question_answering)
+- [Relationship Extraction](https://en.wikipedia.org/wiki/Relationship_extraction)
+- [Sentence breaking](https://en.wikipedia.org/wiki/Sentence_breaking)
+- [sentence tokenization]
+- [sentiment analysis]
+- [Speech recognition](https://en.wikipedia.org/wiki/Speech_recognition)
+- [Speech segmentation](https://en.wikipedia.org/wiki/Speech_segmentation)
+- [spelling correction]
+- [Stemming](https://en.wikipedia.org/wiki/Stemming)
+- [Text-proofing](https://en.wikipedia.org/wiki/Text-proofing)
+- [Text Simplification](https://en.wikipedia.org/wiki/Text_simplification)
+- [Topic segmentation](https://en.wikipedia.org/wiki/Topic_segmentation)
+- [Truecasing](https://en.wikipedia.org/wiki/Truecasing)
+- [vector-space models of meaning]
+- [Word segementation](https://en.wikipedia.org/wiki/Word_segmentation)
+- [Word sense disambiguation](https://en.wikipedia.org/wiki/Word_sense_disambiguation)
+- [Zipf's Law](http://en.wikipedia.org/wiki/Zipf%27s_law) = an empirical law stating that many types of data studied in the physical and social sciences can be approximated by a Zipfian distribution, one of a family of related discrete power law probability distributions
+    - It states that "given some corpus of natural language utterances, the frequency of any word is inversely proportional to its rank in the freuqncy table. Thus, the most frequent word will occur approximately twice as often as the second most frequent word, three times as often as the third most frequent word, etc."
+    - to observe Zipf's law, plot log(rank order) vs. log(frequency)
+    - In human languages, word frequencies have a very heavy-tailed distribution, and can therefore be modeled reasonably well by a Zipf distribution with an *s* close to 1:
+<center><img src="http://upload.wikimedia.org/math/f/7/e/f7ea651d890ccb3249ecd1c8eded8869.png"></center>
+
+
+####*Resource 2: NLP Wikipedia Page*
+
+[Natural Language Processing](https://en.wikipedia.org/wiki/Natural_language_processing)
+
+**A. History**
+
+- Early NLP efforts:
+    - [Turing Test](https://en.wikipedia.org/wiki/Computing_Machinery_and_Intelligence)
+    - [Georgetown experiment](https://en.wikipedia.org/wiki/Georgetown-IBM_experiment)
+    - [ALPAC Report](https://en.wikipedia.org/wiki/ALPAC)
+    - [SHRDLU](https://en.wikipedia.org/wiki/SHRDLU)
+    - [ELIZA](https://en.wikipedia.org/wiki/ELIZA)
+- "Up to the 1980s, most NLP systems were based on complex sets of hand-written rules. Starting in the late 1980s, however, there was a revolution in NLP with the introduction of machine learning algorithms for language processing."
+    - due to Moore's Law-driven increases in computing power and "gradual lessening of the dominance of Chomskyan theories of linguistics"
+- early work here: decision treees
+- later on, part of speech tagging enabled the use of hidden Markov models in NLP
+- "...most other systems depended on corpora specifically developed for the tasks implemented by these systems, which was (and often continues to be) a major limitation in the success of these systems."
+
+**B. NLP Using Machine Learning**
+
+- the general idea: use machine learning algorithms (grounded in statistical inference) to automatically learn a language's "rules" through the analysis of large corpora of typical real-world examples
+- "Increasingly, research [in this area] has focused on statistical models, which make soft, probabilistic decisions based on attached real-valued weights to each input feature"
+- advantages of ML in this space:
+    - the algorithms will naturally be attracted to the most important features, something that is far from guaranteed in hand-written rule formation
+    - tools of statistical inference handle misspelled or unfamiliar inputs much more gracefully than systems of handwritten rules
+    - key --> "systems based on automatically learning the rules can be made more accurate simply by supplying more input data. However, systems based on hand-written rules can only be made more accurate by increasing the complexity of the rules, which is a far more difficult task."
+- learning in NLP is studied within the subfield of Natural Language Learning (NLL)
+
+**C. Major tasks in NLP**
+
+- [Automatic summarization](https://en.wikipedia.org/wiki/Automatic_summarization), [Coreference resolution](https://en.wikipedia.org/wiki/Coreference), [Discourse analysis](https://en.wikipedia.org/wiki/Discourse_analysis), [Machine translation](https://en.wikipedia.org/wiki/Machine_translation), [Morphological segmentation](https://en.wikipedia.org/wiki/Morphology_(linguistics)), [Named entity recognition (NER)](https://en.wikipedia.org/wiki/Named_entity_recognition), [Natural language generation](https://en.wikipedia.org/wiki/Natural_language_generation), [Natural language search](https://en.wikipedia.org/wiki/Natural_language_user_interface), [Natural language understanding](https://en.wikipedia.org/wiki/Natural_language_understanding), [Optical character recognition](https://en.wikipedia.org/wiki/Optical_character_recognition), [Part-of-speech tagging](https://en.wikipedia.org/wiki/Part-of-speech_tagging), [Parsing](https://en.wikipedia.org/wiki/Parsing), [Query expansion](https://en.wikipedia.org/wiki/Query_expansion), [Question Answering](https://en.wikipedia.org/wiki/Question_answering), [Relationship Extraction](https://en.wikipedia.org/wiki/Relationship_extraction), [Sentence breaking](https://en.wikipedia.org/wiki/Sentence_breaking), [Speech recognition](https://en.wikipedia.org/wiki/Speech_recognition), [Speech segmentation](https://en.wikipedia.org/wiki/Speech_segmentation), [Stemming](https://en.wikipedia.org/wiki/Stemming), [Text-proofing](https://en.wikipedia.org/wiki/Text-proofing), [Text Simplification](https://en.wikipedia.org/wiki/Text_simplification), [Topic segmentation](https://en.wikipedia.org/wiki/Topic_segmentation), [Truecasing](https://en.wikipedia.org/wiki/Truecasing), [Word segementation](https://en.wikipedia.org/wiki/Word_segmentation), [Word sense disambiguation](https://en.wikipedia.org/wiki/Word_sense_disambiguation)
+
+####*Resource 3: NLP CRAN Page*
+
+- [NLP packages for R](http://cran.r-project.org/web/views/NaturalLanguageProcessing.html)
+
+####*Resource 4: Text Mining Infrastructure in R*
+
+Feinerer, Ingo, Kurt Hornik, and David Meyer. "Text Mining Infrastructure in R." *Journal of Statistical Software* 25, no. 5 (2008): 1-54. Retrieved from: http://www.jstatsoft.org/v25/i05/paper.
+
+
+
+
+
+    
+
