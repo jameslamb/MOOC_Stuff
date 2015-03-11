@@ -8,3 +8,6 @@ BEA_api_attempt.R
 *.csv
 *.rds
 *.Rdata
+*.docx
+*.doc
+*HW*
