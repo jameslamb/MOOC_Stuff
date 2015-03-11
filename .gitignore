@@ -8,3 +8,9 @@ BEA_api_attempt.R
 *.csv
 *.rds
 *.Rdata
+*.docx
+*.doc
+*HW*
+Model_Thinking/*
+JHU_DataSci/*
+Intro_Corp_Finance/*
