@@ -11,3 +11,6 @@ BEA_api_attempt.R
 *.docx
 *.doc
 *HW*
+Model_Thinking/*
+JHU_DataSci/*
+Intro_Corp_Finance/*
