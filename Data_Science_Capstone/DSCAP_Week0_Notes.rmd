@@ -88,6 +88,108 @@
 
 Feinerer, Ingo, Kurt Hornik, and David Meyer. "Text Mining Infrastructure in R." *Journal of Statistical Software* 25, no. 5 (2008): 1-54. Retrieved from: http://www.jstatsoft.org/v25/i05/paper.
 
+####*Video 0.1 - Your Are a Data Scientist Now*
+
+**A. Notes**
+
+- faculty will be with us all the way
+
+####*Video 0.2 - Welcome to the Capstone!*
+
+**A. Introduction**
+
+- partnership with [SwiftKey](http://swiftkey.com/en/)
+
+
+####*Video 0.3 - welcome from SwiftKey*
+
+**A. Introduction**
+
+- Steps:    
+    - analysis
+    - cleaning
+    - tokenization
+- "We want you to turn this corpus into a predictive system: How cool is that?"
+
+####*Video 0.4 - Intro to Task 0: Understanding the Problem*
+
+**A. Introduction**
+
+- basic goal: build predictive model for natural-language English text
+
+
+####*Video 0.5 - Introduction to Task 1: Getting and Cleaning the Data
+
+- Main tasks:
+    - tokenization
+    - profanity filtering
+- Think of a strategy for dealing with lots of stuff:
+    - misspelling
+    - punctuation
+
+####*Video 0.6 - Regular Expression Part 1-2*
+
+**A. Intro to Regex**
+
+- a combination of literals and metacharacters
+- Draw an analogy with natural language, think of literal text forming the words of this language, and the metacharacters
+
+**B. Literals**
+
+- Simplest pattern consists only of literals. Words that match exactly
+
+**C. Simplicity**
+
+- simplest pattern consists only of literals: a match occurs if the sequence occurs anywhere in the text
+
+**D. Alternatives**
+
+- we need a way to express:
+    - whitespace word boundaries
+    - sets of literals
+    - the beginning and end of a line
+    - alternatives ("war" or "peace") Metacharacters to the rescue!
+
+**E. Metacharacters**
+
+- "^" will match start of a line
+- "$" represents the end of the line
+- We can list a set of characters we will accept at a given point in the match
+    - [Bb][Uu][Ss][Hh] will match all letters of "Bush", regardless of what's actually capitalized
+- ranges of characters or letters:
+    - [a-z] --> any characters a to z, lowercase
+    - [a-zA-Z] --> all characters
+    - [0-9] any numbers
+- carat inside the class says to match anything NOT in the class
+    - [^?.]$ will find all the lines that don't end with a "?" or "."
+- "." is used to refer to any character
+    - searching on "9.11" will give you any place with 9, any character, 11
+- the "|" is a logical or
+    - "flood|fire" will grab all lines with either flood or fire
+    - you can include a bunch of alternatives
+    - note that alternatives (stuff in the "or") can be regex too (not just literals)
+- you could use parentheses to constrain alternatives
+    - ^(Good|Bad] looks only for sentences *starting* with Good or Bad
+- The question mark indicates that the indicated expression is optional
+- to match a "." as a literal period, we need to escape it, as in "\."
+- the * and + signs are metacharacters used to indicate repetition
+    - * means "any number, including none, of the item"
+    - + means "at least one of the item"
+- { and } are referred to as interval quantifiers; they let us specify the minimum and maximum number of matches of an expression
+    - {m,n} --> "at least m times but not more than n matches"
+    - {m} --> "exactly m matches"
+    - {m,} --> "at least m matches"
+- In most implementations of regular expressions, the parentheses not only limit the scope of alternatives divided by a "|", but also can be used to "remember" text matched by the subexpression enclosed
+    - +([a-zA-Z]+) +\1 +
+    - the above translates to: "a space followed by at least one but maybe more characters followed by at least one space followed by the same match from inside the parentheses --> would pick up "night night", "blah blah"
+- the * is "greedy", so it always matches the longest possible string that satisfies the regular expression
+
+**F. Summary**
+
+- Regex are used in many different languages: not unique to R
+- Regular expressions are composed of literals and metacharacters that represent sets or classes of characters/words
+- Text processing via regular expressions is a very powerful way to extract data from "unfriendly" sources (not all data comes as a CSV file)
+- used with the functions ```grep```, ```grepl```, ```sub```, ```gsub``` and others 
 
 
 
