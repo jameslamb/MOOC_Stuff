@@ -1,5 +1,8 @@
 ## Tokenization
 
+    ## package loading
+    library(tm)
+    library(qdap)
 
     ## read the data (start with blogs)
     con <- file(".\\Coursera-SwiftKey\\final\\en_US\\en_US.blogs.txt", open="r")
@@ -10,10 +13,9 @@
     data <- stripWhitespace(data)
     
     ## preliminary frequency table
-    freqs <- termFreq(data)
+    freqs <- termFreq(Corpus(VectorSource(data)))
     
     ## first pass (premade functions)
-    library(tm)
     pass1a <- scan_tokenizer(data)
     pass1b <- MC_tokenizer(data) ## returns more elements
     
