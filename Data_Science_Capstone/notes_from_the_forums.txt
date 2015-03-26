@@ -1,0 +1,47 @@
+For filtering, think about this:
+
+
+Per Gundas Vilkelis (https://class.coursera.org/dsscapstone-003/forum/thread?thread_id=38):
+
+	- Filter out everything in the Twitter list which does not exist in the news file
+	- This will eliminate curse words and most mis-spellings
+
+
+
+More from the forums (https://class.coursera.org/dsscapstone-003/forum/thread?thread_id=143):
+
+
+	- Don't use for loops
+		* R sucks at looping
+		* Try the apply functions or vectorization
+		* Try chapter three of "The R Inferno"
+	- Don't grow lists or vectors on the fly
+		* "I join the tokens from >2M tweets in under a second using rbindlist, and store them as a single column in data.table prior to n-gram generation"
+		* Again, see R Inferno
+	- Use simple structures
+		* Lists are great for tokens, since they can have lots of separate vectors inside
+		* data.frames provide adequate facilities to work with n-grams, since we are guaranteed that every n-gram will have the same length in a particular model dictionary with n parameters. There are also facilities to improve memoory use and character lookup using the data.table package.
+		* going from a vector to list is fast, and a list is easliy converted into a dataframe
+	- Store n-gram dictionaries in keyed data.tables for fast lookup
+
+
+	What not to do:
+	- No parallel computing
+	- mostly no split-apply-combine
+	- no matrices
+		* "We have sol little data that the ```documentTermMatrix``` will be mostly zeroes eating your already-limited memory. This is called sparcity, and it mostly means that you are wasting space in nothing useful.
+	- sadly, no databases
+
+	Additional notes:
+
+	- Consider doing lookups with the "hash" package?
+	- Consider compressing the tokens (storing as 16-bit integers) and then looking up in a hash table?
+	- hash packages, has tables can give you some crazy speed. See (https://class.coursera.org/dsscapstone-003/forum/thread?thread_id=143#comment-406) for syntax
+	- A different ngram approach (https://class.coursera.org/dsscapstone-003/forum/thread?thread_id=143#comment-410).
+	- The ```tm``` tokenizer is really not efficient...need to tokenize individual sentences, then store the ngrams
+	- IMPORTANT --> join sentences tail to head, with n-1 NA spacers (then you can just drop everything with NA and be left with fluid n-grams. This is brilliant!
+	- Maybe try "setkey" in data.table?
+
+
+	- Consider threshold for inclusion in the ngram dictionary
+	- consider txt.to.words()
