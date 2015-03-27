@@ -1,0 +1,138 @@
+---
+title: "Data Science Capstone - Milestone Report"
+author: "James Lamb"
+date: "Thursday, March 26, 2015"
+output: html_document
+---
+
+##I. Project Description
+
+This document contains a brief description of the Capstone project the Johns Hopkins [data science specialization](https://www.coursera.org/specialization/jhudatascience/1?utm_medium=listingPage), a collection of MOOCs provided in partnership with Coursera.
+
+##II. Data Summary
+
+####*A. Source and Description*
+
+The raw data (which can be downloaded [here]("https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip"), contain text corpora from three source types (blogs, news, Twitter) in four languages (English, Finnish, German, Russian). Only the English corpora are used for this particular project.
+
+####*B. Exploratory Data Analysis*
+
+I present some preliminary summary statistics below. Only limited data cleaning was done in preparing these summaries. More thorough processing (described in the next section) will be implemented prior to deploying the final app.
+
+```{r eda, eval=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=FALSE}
+
+    ## Package loading
+    library(tm); library(pryr); library(knitr); library(xtable); library(gridExtra);
+
+    ## read in the data
+    types <- list("blogs", "news", "twitter")
+    
+    for (i in 1:length(types)){
+        
+        con <- file(paste0(".\\Coursera-SwiftKey\\final\\en_US\\en_US.",types[[i]],".txt"), open="rb")
+        assign(paste0("data_",types[[i]]), readLines(con, encoding="UTF-8"))
+        close(con); rm(con);
+    }
+ 
+    ## do some whitespace stripping
+    data_blogs <- stripWhitespace(data_blogs)
+    data_news <- stripWhitespace(data_news)
+    data_twitter <- stripWhitespace(data_twitter)
+
+    ## size in memory
+    blogs_sz <- object_size(data_blogs)/1000
+    news_sz <- object_size(data_news)/1000
+    twitter_sz <- object_size(data_twitter)/1000
+
+    ## Get line counts
+    blogs_l <- length(data_blogs)
+    news_l <- length(data_news)
+    twitter_l <- length(data_twitter)
+
+    ## word-count function (probably not bad for tokenizing(?))
+    word_count <- function(x){
+        length(unlist(strsplit(x, " ")))
+    }
+
+    ## Longest line
+    blogs_wc <- as.numeric(lapply(data_blogs, word_count))
+        blogs_avgL <- mean(blogs_wc)
+        blogs_maxL <- max(blogs_wc)
+        blogs_tot  <- sum(blogs_wc)
+        #blogs_minL <- min(blogs_wc)
+
+     news_wc <- as.numeric(lapply(data_news, word_count))
+        news_avgL <- mean(news_wc)
+        news_maxL <- max(news_wc)
+        news_tot  <- sum(news_wc)
+        #news_minL <- min(news_wc)
+
+     twitter_wc <- as.numeric(lapply(data_twitter, word_count))
+        twitter_avgL <- mean(twitter_wc)
+        twitter_maxL <- max(twitter_wc)
+        twitter_tot  <- sum(twitter_wc)
+        #twitter_minL <- min(twitter_wc)
+
+    rm(blogs_wc); rm(news_wc); rm(twitter_wc);
+
+    ## create vectors of stats
+    measures <- c("Size in Memory (kB)", "Number of Lines", "Number of Total Words", "Avg. Words Per Line", "Longest Line (# words)")
+    
+    v_blogs <- c(blogs_sz, blogs_l, blogs_tot, blogs_avgL, blogs_maxL)
+    v_news <- c(news_sz, news_l, news_tot, news_avgL, news_maxL)
+    v_twitter <- c(twitter_sz, twitter_l, twitter_tot, twitter_avgL, twitter_maxL)
+    sumstats <- data.frame(gsub(" ", "", format(round(v_blogs,0),big.mark=",",scientific=F)),
+                           gsub(" ", "", format(round(v_news,0),big.mark=",",scientific=F)),
+                           gsub(" ", "", format(round(v_twitter,0),big.mark=",",scientific=F))
+                           )
+        rownames(sumstats) <- measures
+        names(sumstats) <- types
+
+    ## Remove everything else from memory
+    rm(list= c("blogs_avgL", "blogs_l", "blogs_maxL", "blogs_sz", "blogs_tot", "data_blogs", "v_blogs",
+               "news_avgL", "news_l", "news_maxL", "news_sz", "news_tot", "data_news", "v_news",
+               "twitter_avgL", "twitter_l", "twitter_maxL", "twitter_sz", "twitter_tot", "data_twitter","v_twitter",
+               "types", "i", "measures"))
+
+    ## print table of results
+    #grid.table(sumstats)
+    kable(sumstats)    
+```
+
+A few interesting observations from this preliminary summarizing effort:
+
+1. The *Twitter* corpus contains many small, independent sentences (i.e. short lines).
+2. The *blogs* corpus is most likely to have long lines of related prose (i.e. high words per line)
+3. The *news* corpus seems, at first glance, more similar to the blogs than to Twitter
+
+##III. The Prediction Algorithm
+
+####*A. Pre-Processing*
+
+Prior to performing any prediction, the corpus will need to be processed into a useable format. First, 
+
+####*B. Baseline Model*
+
+The baseline prediction algorithm will be a simple one-word-ahead [n-gram model](http://en.wikipedia.org/wiki/N-gram) model. This model will take as its inputs a string of words from the user and will predict the next word in the sequence
+
+####*C. Potential Enhancements*
+
+
+
+####*C. Model Deployment*
+
+
+##IV. Shiny App Design
+
+####*A. Project Scope*
+
+I do not have ambitious plans for the user interface on the [shiny app](http://shiny.rstudio.com/). Following the advice of some of the Community TAs, my focus will be primarily on fulfilling the requirements in the project rubric.  I plan to create a simple shiny app which gives users a 
+
+####*B. Design Goals*
+
+##V. References
+
+[1] http://stackoverflow.com/questions/8920145/count-the-number-of-words-in-a-string-in-r
+[2] http://stackoverflow.com/questions/10587621/how-to-print-to-paper-a-nicely-formatted-data-frame
+[3] http://christophj.github.io/replicating/r/how-to-produce-nice-tables-in-pdfs-using-knitr-sweave-and-r/
+
