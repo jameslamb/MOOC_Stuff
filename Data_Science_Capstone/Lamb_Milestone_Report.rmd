@@ -1,19 +1,20 @@
 ---
 title: "Data Science Capstone - Milestone Report"
 author: "James Lamb"
-date: "Thursday, March 26, 2015"
-output: html_document
+output: 
+    html_document:
+        theme: "journal"
 ---
 
 ##I. Project Description
 
-This document contains a brief description of the Capstone project the Johns Hopkins [data science specialization](https://www.coursera.org/specialization/jhudatascience/1?utm_medium=listingPage), a collection of MOOCs provided in partnership with Coursera.
+This document contains a brief description of my initial efforts for the Capstone project in the Johns Hopkins [data science specialization](https://www.coursera.org/specialization/jhudatascience/1?utm_medium=listingPage), a collection of MOOCs provided in partnership with Coursera.
 
 ##II. Data Summary
 
 ####*A. Source and Description*
 
-The raw data (which can be downloaded [here]("https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip"), contain text corpora from three source types (blogs, news, Twitter) in four languages (English, Finnish, German, Russian). Only the English corpora are used for this particular project.
+The raw data (which can be downloaded [here]("https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip")), contain text corpora from three source types (blogs, news, Twitter) in four languages (English, Finnish, German, Russian). Only the English corpora are used for this particular project.
 
 ####*B. Exploratory Data Analysis*
 
@@ -105,34 +106,53 @@ A few interesting observations from this preliminary summarizing effort:
 2. The *blogs* corpus is most likely to have long lines of related prose (i.e. high words per line)
 3. The *news* corpus seems, at first glance, more similar to the blogs than to Twitter
 
+These observations are corroborated by the plots below:
+
+```{r edaPlots, eval=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=FALSE}
+
+## NEED SOME CODE WITH PLOTS OF THE DATA
+http://voyant-tools.org/ ??
+https://blogs.princeton.edu/etc/2012/08/16/see-text-in-whole-new-waytext-visualization-tools/
+```
+
 ##III. The Prediction Algorithm
 
 ####*A. Pre-Processing*
 
-Prior to performing any prediction, the corpus will need to be processed into a useable format. First, 
+Prior to performing any prediction, the corpus will need to be processed into a usable format. First, I will use some of the utilities in the ```tm``` package to strip out unnecessary white space and remove special characters. Next, I'll use my own function to break the lines into sentences and then to break sentences into n-grams.
+
+For a general-use, all-audiences application like the one proposed for this project, it's advisable to filter profane words. Rather than omitting profane words from the corpus, which would hurt predictive accuracy, I've decided to leave them in but replace them with something like "%%%%" in the final output. I've identified several lists of profane English words online. The definition of what is and is not profanity is highly personal, so in an attempt to bring some objectivity to the problem, I will create my own profanity list which includes all words appearing on at least half of the candidate lists.
+
+Because the model will need to provide rapid, reactive predictions in a web browser, it needs to be lightweight. For this reason, I will conduct more detailed exploratory analysis to ensure that only reasonably common phrases/words are stored in the final model as candidates for prediction.
+
 
 ####*B. Baseline Model*
 
-The baseline prediction algorithm will be a simple one-word-ahead [n-gram model](http://en.wikipedia.org/wiki/N-gram) model. This model will take as its inputs a string of words from the user and will predict the next word in the sequence
+The baseline prediction algorithm will be a simple one-word-ahead [n-gram model](http://en.wikipedia.org/wiki/N-gram) model. This model will take as its inputs a string of words from the user and will predict the next word in the sequence.
+
+For unobserved input combinations, I will rely on a simple [back-off model](http://en.wikipedia.org/wiki/Katz%27s_back-off_model). Essentially, this involves systematically reducing *n* until a reliable prediction of the next word can be made.
+
+For example: "The building looks" --> "building looks" --> "looks".
+
+The model will be trained on a training set (85% of total corpus) and its predictive accuracy will be tested on a holdout sample (15%).
 
 ####*C. Potential Enhancements*
 
+The goal for the baseline model is just to predict better than a random draw from the corpus might. To improve performance, I will explore the following enhancements:
 
-
-####*C. Model Deployment*
-
+- Tagging of [stopwords](http://en.wikipedia.org/wiki/Stop_words) (such as *the*, *it*, and *which*) to improve the back-off model
+- Use of more advanced data storage options like [hash tables](http://cran.r-project.org/web/packages/hash/hash.pdf) to improve the speed of the app
+- Some manual fixes of [common misspellings](http://www.oxforddictionaries.com/words/common-misspellings)
+- Examination of strategies for choosing between a model based on Twitter data and one based on news and blogs (on the basis of user input)
 
 ##IV. Shiny App Design
 
 ####*A. Project Scope*
 
-I do not have ambitious plans for the user interface on the [shiny app](http://shiny.rstudio.com/). Following the advice of some of the Community TAs, my focus will be primarily on fulfilling the requirements in the project rubric.  I plan to create a simple shiny app which gives users a 
+I do not have ambitious plans for the user interface on the [shiny app](http://shiny.rstudio.com/). Following the advice of some of the Community TAs, my focus will be primarily on fulfilling the requirements in the project rubric.  I plan to create a simple shiny app which gives users an entry text box, a submit button, and some predictions printed to the page.
 
-####*B. Design Goals*
+##V. Final Thoughts
 
-##V. References
+This is, admittedly, a very basic, unambitious project description. As a result of several time pressures, I've fallen a bit behind on Tasks 1-4 in the project. I hope to go well beyond the level of sophistication described in this report, but my plan at the moment is to focus on the basic construction and make enhancements as time permits.
 
-[1] http://stackoverflow.com/questions/8920145/count-the-number-of-words-in-a-string-in-r
-[2] http://stackoverflow.com/questions/10587621/how-to-print-to-paper-a-nicely-formatted-data-frame
-[3] http://christophj.github.io/replicating/r/how-to-produce-nice-tables-in-pdfs-using-knitr-sweave-and-r/
-
+Thank you for reading my proposal. I look forward to hearing your thoughts.

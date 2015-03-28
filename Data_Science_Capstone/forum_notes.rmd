@@ -99,4 +99,8 @@ B. [I am lost](https://class.coursera.org/dsscapstone-003/forum/thread?thread_id
     - It's fun to figure out how many words you need for % of total words/phrases
     - A bunch of words with count=1 will be in you corpus. These are not that useful
 - some useful functions:
+
+
+
+Consider splitting the blog data into twitter vs. news to get a formal vs. non-formal set?
     - ```tolower()```, ```str_replace()```, ```gsub()```, ```removeWords()```
