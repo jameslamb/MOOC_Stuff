@@ -3,7 +3,7 @@ title: "Data Science Capstone - Milestone Report"
 author: "James Lamb"
 output: 
     html_document:
-        theme: "journal"
+        theme: journal
 ---
 
 ##I. Project Description
@@ -23,81 +23,100 @@ I present some preliminary summary statistics below. Only limited data cleaning 
 ```{r eda, eval=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=FALSE}
 
     ## Package loading
-    library(tm); library(pryr); library(knitr); library(xtable); library(gridExtra);
+    library(tm); library(pryr); library(knitr); library(gridExtra); library(stringr);
 
-    ## read in the data
+    ## read in the data (use UTF-8 encoding so it gets through all the weird characters) http://en.wikipedia.org/wiki/UTF-8
     types <- list("blogs", "news", "twitter")
     
     for (i in 1:length(types)){
-        
         con <- file(paste0(".\\Coursera-SwiftKey\\final\\en_US\\en_US.",types[[i]],".txt"), open="rb")
         assign(paste0("data_",types[[i]]), readLines(con, encoding="UTF-8"))
         close(con); rm(con);
     }
- 
-    ## do some whitespace stripping
-    data_blogs <- stripWhitespace(data_blogs)
-    data_news <- stripWhitespace(data_news)
-    data_twitter <- stripWhitespace(data_twitter)
 
-    ## size in memory
-    blogs_sz <- object_size(data_blogs)/1000
-    news_sz <- object_size(data_news)/1000
-    twitter_sz <- object_size(data_twitter)/1000
+    ## Convert to Corpus, fix issues with weird characters [http://stackoverflow.com/questions/9637278/r-tm-package-invalid-input-in-utf8towcs]
 
-    ## Get line counts
-    blogs_l <- length(data_blogs)
-    news_l <- length(data_news)
-    twitter_l <- length(data_twitter)
+    ## Some useful functions
 
-    ## word-count function (probably not bad for tokenizing(?))
-    word_count <- function(x){
-        length(unlist(strsplit(x, " ")))
+        ## define a preprocessing function (http://stat.ethz.ch/R-manual/R-patched/library/base/html/regex.html)
+        preproc <- function(x){
+            x <- stringr::str_replace_all(x, "[^[:graph:]]", " ") ## remove everything except graphical characeters (mitigate errors)
+            x <- tm::stripWhitespace(x) ## strip out whitespace
+            x <- tolower(x) ## convert to lowercase
+            x <- tm::removeNumbers(x) ## remove numbers
+            x
+        }
+
+    ## Word count function (assumes character vector as input)
+    word_count  <- function(x){
+
+        ## function for counting
+        line_count <- function(x){
+            length(unlist(strsplit(x, " ")))
+        }
+        
+        ## loop and count
+        word_vec <- as.numeric(lapply(x,line_count))
+        
+        ## print this vector of counts out
+        word_vec
     }
 
-    ## Longest line
-    blogs_wc <- as.numeric(lapply(data_blogs, word_count))
-        blogs_avgL <- mean(blogs_wc)
-        blogs_maxL <- max(blogs_wc)
-        blogs_tot  <- sum(blogs_wc)
-        #blogs_minL <- min(blogs_wc)
+    ## Do some data processing/cleaning
+    data_blogs <- preproc(data_blogs)
+    data_news <- preproc(data_news)
+    data_twitter <- preproc(data_twitter)
 
-     news_wc <- as.numeric(lapply(data_news, word_count))
-        news_avgL <- mean(news_wc)
-        news_maxL <- max(news_wc)
-        news_tot  <- sum(news_wc)
-        #news_minL <- min(news_wc)
+    ## Function to summarize a corpus that comes in as a text vector
+    summarize_text <- function(corpora = list(), types=list()){
+        
+        ## initialize a list holding vectors of summary stats
+        statlist <- list(NULL,NULL,NULL,NULL,NULL)
+        
+        ## initialize the dataframe to hold everything
+        sumstats <- data.frame(rep(0,5))
+        
+        for (i in 1:length(types)){
+            
+            ## extract this vector from the list
+            x <- corpora[[i]]
+            
+            ## initialize a vector to store the summary states
+            temp <- rep(0,5)
+            
+            ## calculate object size
+            temp[1] <- pryr::object_size(x)/1000
+            
+            ## line counts
+            temp[2] <- length(x)
+            
+            
+            ## summary stats
+            wordcounts <- word_count(x)
+            
+            temp[3] <- sum(wordcounts)
+            temp[4] <- mean(wordcounts)
+            temp[5] <- max(wordcounts)
+            
+#             ## store in a vector
+#             statlist[[i]] <- gsub(" ", "", format(round(temp,0), big.mark=",", scientific=F))
+            
+            ## append to the dataframe
+            sumstats[,i] <- gsub(" ", "", format(round(temp,0), big.mark=",", scientific=F))
+            }
+        
+        rownames(sumstats) <- c("Size in Memory (kB)", "Number of Lines", "Number of Total Words", "Avg. Words Per Line", "Longest Line (# words)")
+        names(sumstats) <- unlist(types)
+        
+        ## print the table (save to global environment too)
+        stats_table <<- kable(sumstats) #stats_table <- grid.table(sumstats)
+        stats_table
 
-     twitter_wc <- as.numeric(lapply(data_twitter, word_count))
-        twitter_avgL <- mean(twitter_wc)
-        twitter_maxL <- max(twitter_wc)
-        twitter_tot  <- sum(twitter_wc)
-        #twitter_minL <- min(twitter_wc)
+    }
 
-    rm(blogs_wc); rm(news_wc); rm(twitter_wc);
+    ## create the summary table
+    summarize_text(corpora=list(data_blogs,data_news,data_twitter), types = list("blogs", "news", "twitter"))
 
-    ## create vectors of stats
-    measures <- c("Size in Memory (kB)", "Number of Lines", "Number of Total Words", "Avg. Words Per Line", "Longest Line (# words)")
-    
-    v_blogs <- c(blogs_sz, blogs_l, blogs_tot, blogs_avgL, blogs_maxL)
-    v_news <- c(news_sz, news_l, news_tot, news_avgL, news_maxL)
-    v_twitter <- c(twitter_sz, twitter_l, twitter_tot, twitter_avgL, twitter_maxL)
-    sumstats <- data.frame(gsub(" ", "", format(round(v_blogs,0),big.mark=",",scientific=F)),
-                           gsub(" ", "", format(round(v_news,0),big.mark=",",scientific=F)),
-                           gsub(" ", "", format(round(v_twitter,0),big.mark=",",scientific=F))
-                           )
-        rownames(sumstats) <- measures
-        names(sumstats) <- types
-
-    ## Remove everything else from memory
-    rm(list= c("blogs_avgL", "blogs_l", "blogs_maxL", "blogs_sz", "blogs_tot", "data_blogs", "v_blogs",
-               "news_avgL", "news_l", "news_maxL", "news_sz", "news_tot", "data_news", "v_news",
-               "twitter_avgL", "twitter_l", "twitter_maxL", "twitter_sz", "twitter_tot", "data_twitter","v_twitter",
-               "types", "i", "measures"))
-
-    ## print table of results
-    #grid.table(sumstats)
-    kable(sumstats)    
 ```
 
 A few interesting observations from this preliminary summarizing effort:
@@ -106,14 +125,119 @@ A few interesting observations from this preliminary summarizing effort:
 2. The *blogs* corpus is most likely to have long lines of related prose (i.e. high words per line)
 3. The *news* corpus seems, at first glance, more similar to the blogs than to Twitter
 
-These observations are corroborated by the plots below:
+The plots below (based only on the first 50,000 lines of each corpus) provide some additional word-level insights:
 
-```{r edaPlots, eval=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=FALSE}
+```{r edaPlots, eval=TRUE, cache=TRUE, warning=FALSE, message=FALSE, echo=FALSE, results='asis'}
+
+    ## load packages
+    suppressPackageStartupMessages(library(googleVis)); library(tm);
+
+    ## Blogs
+
+        ## Subset Out a piece of the data for graphing
+        smpl <- 50000L ##10000L
+        g_blogs <- head(data_blogs,n=smpl)
+        gt_blogs <- tolower(scan_tokenizer(g_blogs))
+        freqtable_blogs <- sort(table(gt_blogs), decreasing=TRUE)
+        
+        ## get a list of the words
+        top25_blogs <- head(names(freqtable_blogs),n=25)
+    
+        ## convert to data frame
+        df_blogs <- data.frame(freqtable_blogs)
+        df_blogs$word <- rownames(df_blogs)
+        df_blogs <- df_blogs[,c(2,1)] ## reorder
+        names(df_blogs) <- c("word", "freq")
+    
+        ## recode everything below the top 10 to "other"
+        df_blogs[which((df_blogs$word %in% top25_blogs)==FALSE),]$word <- "other"
+            df_blogs$freq <- as.numeric(df_blogs$freq)
+            df_blogs$word <- as.factor(df_blogs$word)
+    
+        ## aggregate
+        blogs_agg <- aggregate(freq ~ word, data=df_blogs, na.rm=TRUE, sum)
+            blogs_agg <- blogs_agg[order(-blogs_agg$freq),]
+    
+        ## create the googleVis pie chart
+        p_blogs <- gvisPieChart(blogs_agg,options = list(title = "Blog Corpus: Top 25 Words", width = 300, height = 400))
+        #plot(p_blogs)
+        
+    ## News
+
+        ## Subset Out a piece of the data for graphing
+        g_news <- head(data_news,n=smpl)
+        gt_news <- tolower(scan_tokenizer(g_news))
+        freqtable_news <- sort(table(gt_news), decreasing=TRUE)
+        
+        ## get a list of the words
+        top25_news <- head(names(freqtable_news),n=25)
+    
+        ## convert to data frame
+        df_news <- data.frame(freqtable_news)
+        df_news$word <- rownames(df_news)
+        df_news <- df_news[,c(2,1)] ## reorder
+        names(df_news) <- c("word", "freq")
+    
+        ## recode everything below the top 10 to "other"
+        df_news[which((df_news$word %in% top25_news)==FALSE),]$word <- "other"
+            df_news$freq <- as.numeric(df_news$freq)
+            df_news$word <- as.factor(df_news$word)
+    
+        ## aggregate
+        news_agg <- aggregate(freq ~ word, data=df_news, na.rm=TRUE, sum)
+            news_agg <- news_agg[order(-news_agg$freq),]
+    
+        ## create the googleVis pie chart
+        p_news <- gvisPieChart(news_agg,options = list(title = "News Corpus: Top 25 Words", width = 300, height = 400))
+
+    ## Twitter
+
+        ## Subset Out a piece of the data for graphing
+        g_twitter <- head(data_twitter,n=smpl)
+        gt_twitter <- tolower(scan_tokenizer(g_twitter))
+#         gt_twitter <- tolower(MC_tokenizer(data_twitter)) ## gets past UTF problems for now. Solve later.
+        freqtable_twitter <- sort(table(gt_twitter), decreasing=TRUE)
+        
+        ## get a list of the words
+        top25_twitter <- head(names(freqtable_twitter),n=25)
+    
+        ## convert to data frame
+        df_twitter <- data.frame(freqtable_twitter)
+        df_twitter$word <- rownames(df_twitter)
+        df_twitter <- df_twitter[,c(2,1)] ## reorder
+        names(df_twitter) <- c("word", "freq")
+    
+        ## recode everything below the top 10 to "other"
+        df_twitter[which((df_twitter$word %in% top25_twitter)==FALSE),]$word <- "other"
+            df_twitter$freq <- as.numeric(df_twitter$freq)
+            df_twitter$word <- as.factor(df_twitter$word)
+    
+        ## aggregate
+        twitter_agg <- aggregate(freq ~ word, data=df_twitter, na.rm=TRUE, sum)
+            twitter_agg <- twitter_agg[order(-twitter_agg$freq),]
+    
+        ## create the googleVis pie chart
+        p_twitter <- gvisPieChart(twitter_agg,options = list(title = "Twitter Corpus: Top 25 Words", width = 300, height = 400))
+
+
+    ## create the final plot
+    p_temp <- gvisMerge(p_blogs,p_news, horizontal=TRUE)
+    p_final <- gvisMerge(p_temp, p_twitter, horizontal=TRUE)
+    #plot(p_final)
+
+    ## print the html: slidify
+    print(p_final, "chart")
 
 ## NEED SOME CODE WITH PLOTS OF THE DATA
-http://voyant-tools.org/ ??
-https://blogs.princeton.edu/etc/2012/08/16/see-text-in-whole-new-waytext-visualization-tools/
+# http://voyant-tools.org/ ??
+# https://blogs.princeton.edu/etc/2012/08/16/see-text-in-whole-new-waytext-visualization-tools/
 ```
+
+The plots provide a few additional insights at the unigram level:
+
+1. Possessive language (e.g. "I", "you", "my") is more prevalent in the Twitter and Blogs corpora.
+2. On a related note, News tends to involve more impersonal language (e.g. "he", "his")
+3. The blogs corpus shows the *word* "s" at the 18th most popular, suggesting that the data have some unforeseen structure that my preprocessing and first-pass tokenization is failing to pick up
 
 ##III. The Prediction Algorithm
 
@@ -144,6 +268,12 @@ The goal for the baseline model is just to predict better than a random draw fro
 - Use of more advanced data storage options like [hash tables](http://cran.r-project.org/web/packages/hash/hash.pdf) to improve the speed of the app
 - Some manual fixes of [common misspellings](http://www.oxforddictionaries.com/words/common-misspellings)
 - Examination of strategies for choosing between a model based on Twitter data and one based on news and blogs (on the basis of user input)
+- Replacement of contractions with their consituent bigrams (e.g. "don't" --> "do not")
+
+A few Twitter-specific enhancements:
+
+- Thoughtful and appropriate handling of [emojis](http://en.wikipedia.org/wiki/Emoji) (most likely dropping them)
+- Appropriate treatment of common acronyms like *RT*, *btw*, etc.
 
 ##IV. Shiny App Design
 
