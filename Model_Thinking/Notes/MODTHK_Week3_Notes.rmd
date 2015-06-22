@@ -1,0 +1,117 @@
+<center> <h2>Model Thinking - Week 3</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Reading 1: Sampling Distributions and the CLT*
+
+**A. Sampling Distributions**
+
+- sampling distribution = "probability distribution of a statistic"
+- standard error = "standard deviation of the sampling distribution"
+- if the population size is much larger than the sample, the standard error will be the same whether we sample with or without replacement
+    - however, if the sample represents a significant fraction (maybe 1/20) of the population size, the standard error will be meaningfully smaller when we sample without replacement
+
+**B. Samping Distribution of the Mean**
+
+- the finite population correction (FPC) represents the standard deviation adjustment made for sample size:
+    - sqrt[(N - n) / (N - 1)]
+- when the population size is very large relative to the sample size, the FPC is approximately equal to 1 and the standard error fomula can be approximated by just dividing the sample standard deviation by sqrt(n)
+- this approximation (with no FPC) is often overlook in introductory statistics texts
+
+**C. Sampling Distribution of the Proportion**
+
+- imagine we draw a bunch of possible samples from, run test, and measures the proportion of successes *p* and failures *q*. This is what we mean when we say a "sampling distribution of the proportion"
+- mean of the sampling distribution of the proportion is equal to the probability of success in the population (P)
+    - standard error of the sampling distribution is determined by the standard deviation of the population, thep opulation size, and the sample size
+- this also includes a finitie population correction (FPC), usually overlooked or approximated away
+
+**D. Central Limit Theorem**
+
+- "the sampling distribution of any statistic will be normal or nearly normal, if the sample size is large enough"
+
+**E. T-Distribution vs. Normal Distribution**
+
+- if the population standard deviation is known, use the normal distribution
+- if the population standard deviation is unknown, use the t-distribution
+    - t dist also better for smaller samples
+- "the t distribution should not be used with small samples from populations that are not approximately normal"
+
+####*Reading 2 - Binomial Probability Distribution*
+
+- source [HERE](http://stattrek.com/probability-distributions/binomial.aspx)
+
+**A. Binomial Experiment**
+
+- the binomial experiment is a statistical experiment with the following properties:
+    - *n* repeated trials
+    - each trial can result in just two possible outcomes (success or failure)
+    - the probability of success, denoted by *P*, is the same on every trial
+    - the trials are independent
+- a binomial random variable is the number of successes x in n repeated trials of a binomial experiment
+- the probability distribution of a binomial random variable is called a binomial distribution
+- properties of this distribution: 
+    1. mean = nP
+    2. variance = nP(1-p)
+    
+**B. Binomial Formula and Binomial Probability**
+
+- the binomial probability refers to the probability that a binomial experiment results in exactly *x* successes
+- b(x: n, P) = nC~x~P^x^(1-P)^n-x^, where x is the exact number of successes, n is the number of trials, P is the probability of success, and nC~x~ is the number of combinations of n things, taken x at a time (choose x in n)
+    - nC~x~ = "choose x in n" = n!/[x!(n-x)!]
+
+**C. Cumulative Binomial Probability**
+
+- this refers to the probability that the binomial random variables falls within a specified range (e.g. is greater than or equal to a stated lower limit and less than or equal to a state upper limit)
+    - this has to be estimated by adding up the probabilities of each individual state in the range (see formula above)
+
+####*Reading 3 - Six Sigma*
+
+- source [HERE](https://en.wikipedia.org/wiki/Six_Sigma)
+
+**A. Introduction**
+
+- tools for process improvement
+- control methods and people within the organization (e.g. "black belts") who manage them
+- "The maturity of a manufacturing process can be described by a *sigma* rating indicating its yield or the percentage of defect-free products is creates. A six sigma process is one in which 99.99966% of all opportunities to produce some feature of a part are statistically expected to be free of defects (3.4 defective features / millions opportunities). 
+
+**B. Guiding principles**
+
+- clear focus on achieving measurable and quantifiable financial returns from any Six Sigma project
+- an increased emphasis on strong and passionate management leadership and support
+- clear commitment to making decisions on the basis of verifiable data and statistical methods, rather than assumptions and guesswork
+- goal: 3.4 defects per million opportunities (DPMO)
+
+**C. Etymology of "six sigma process"**
+
+- capability studies measure the number of standard deviations between the process mean and the nearest specification limit in sigma units
+- "as process standard deviation goes up, or the mean of the process moves away from the center of the tolerance, fewer standard deviations will fit between the mean and the nearest specification limit, decreasing the sigma number and increasing the likelihood of items outside specification"
+
+**D. Criticism**
+
+- Six Sigma is "narrowly designed to fix exisiting processes"
+- however, it cannot help in "coming up with new products or disruptive technologies"
+- there is rampant misuse of P-values, multiple regression, other stats
+- "one of the most serious but all-too-common misuses of inferential statistics is to take a model that was developed through exploratory model building and subject it to the same sorts of statistical tests that are used to validate a model that was specified in advance"
+- Wharton School research: "Six Sigma leads to incremental innovation at the expense of blue skies research"
+    - Six Sigma is probably not appropriate in a research environment
+
+####*Reading 4 - Cellular Automata 1*
+
+"Chapter 8 - Complex Adaptive Social Systems in One Dimension"
+
+**A. Notes**
+
+- exploring some models hoping to "...provide some useful glimpses into the behavior of complex adaptive social systems"
+- models of complex social systems as "devilishly simple"
+
+**B. Simple Model**
+
+- agents make decisions based on the decisions of their neighbors
+- difference between social and physical systems:
+> A curical difference between models of complex social and physical systems is in our assumptions about appropriate behavioral rules. ...one hydrogen atom acts just like another hydrogen atom relying on a set of fixed, external physical properties and forces. SOcial agents, on the other hand, often alter their behavior in response to, and in anticipation of, the actions of others.
+
+- micro agents interact in ways that produce macro phenomena which in turn feed back into the micro-level interactions in various ways
+- the most important idea here is that of *expectations*...social agents (people?) change their behavior based on expectations of other agents' behaviors
+
+**C. Cellular Automata**
+
+- 

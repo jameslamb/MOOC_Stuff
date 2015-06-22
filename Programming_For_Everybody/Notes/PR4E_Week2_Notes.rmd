@@ -1,0 +1,264 @@
+<center> <h2>Programming for Everybody - Week 2</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Python for Informatics - Chapter 2*
+
+**A. Values and Types**
+
+- do not use commas to write large numbers in Python
+- it is a good idea to start variable names with a lowercase letter
+- when you type a statement in interactive mode, it is executed immediately
+    - otherwise, it will be executed at a time defined by your program's control structure
+- operators = stuff like +, -, etc.
+    - operands = stuff that is operated on
+- if either operand is a float, python will do a float operation
+    - if both are integers, and integer operation will be executed
+    - 59/60 = 0 (remainder is chopped off)
+- "in a script, expressions don't execute like they do interactively." You need to assign the result to something
+- order of operations = PEDMAS
+    - operators with the same precedence are evaluated left to right
+
+**B. The Modulus Operator (%)**
+
+- works on integers, prints the remainder
+- modulus can be used to extract a few digits without having to go through string conversion
+
+**C. String Operations**
+
+- you can use ```raw_input()``` to prompt the user to type something
+    - the result is a string, which can be converted with ```int()``` or ```float()``` if necessary
+
+**D. Commenting and Variable Names**
+
+- comments in python start with a hash
+- "comments are most useful when they document non-obvious features of the code (such as WHY certain things are being done"
+- "good variable names can reduce the need for comments, but long names can make complex expressions hard to read, so there is a trade-off"
+- good variables names are *mnemonic*, meaning "memory aid"
+    - use variable names to help show intent
+
+**E. Debugging**
+
+- if you spell a variable name wrong, you will get a "use before def" error
+
+####*Python for Informatics - Chapter 3*
+
+**A. Boolean Expressions**
+
+- an expression that is either true or false
+- "not equal" operator is "!="
+- "is not" operator is "is not"
+- any nonzero number is interpreted as "true"
+    - "17 and True" evaluates to True
+- if you want to write placeholder code, you can use ```pass``` in the body of a compound statement (like a loop or function)
+- you actually can do if statements interactively as well!
+    - meh. Not thrilled about this.
+- chained conditional = "using elifs to do a bunch of different things)
+- there is no limit on the number of ```elif``` statements you can use, but ```else``` can only be used once, at the end
+- Dr. Chuck says to avoid nested conditionals (use ands and ors instead)
+
+**B. Catching exceptions using try and except**
+
+- the ```try``` and ```except``` framework is like an "insurance policy" for your code
+- consider the following code, which asks for raw input but gives an explicit error handling
+
+```{r eval=FALSE, engine='python'}
+inp = raw_input('Enter Fahrenheit Temperature:')
+try:
+    fahr = float(inp)
+    cel = (fahr - 32.0) * 5.0 / 9.0
+    print cel
+except:
+    print 'Please enter a number'
+```
+
+- Python starts by executing the sequence of statements in the ```try``` block. IF all goes well, it skips the ```except``` block and proceeds. If an exception occurs in the ```try``` block, Python jumps out of the ```try``` block and executes the sequence of statements in the ```except``` block.
+- this is called "catching an exception"
+
+**C. Short-circuiting the Evaluation**
+
+- when Python is processing a logical expression and decides that nothing is to be gained from further evaluation, it will stop immediately
+    - for example, if an initial statement on the left of an "and" is False, it will immediately stop.
+- This is called short-circuiting the evaluation
+- you can construct expressions with a *guard evaluation* to avoid an error:
+    - let's say that you are dividing by something and are scared that that thing might at some point be  0:
+    - just put an "!= 0" statement at an early point in the list around the ```if``` statement. If it fails, Python will move on and there won't be any error
+- traceback = "a list of the functions that are executing, printed when an exception occurs"
+
+####*Python for Informatics - Chapter 4*
+
+**A. Function Calls**
+
+- function = "a named sequence of statements that performs a computation"
+- a function gives you back a "return value"
+- ```len``` gives character count
+- conversion functions: ```float```, ```str```, ```int```
+
+**B. Random numbers**
+
+- ```random.random()``` gives you something between 0.0 and 1.0
+- ```random.randint(low,high)``` returns an integer below low and high, including both
+- ```random.choice(set)``` let's you randomly choose one element from a predefined set (i.e. a variable in your program)
+- "the random module also provides functions to generate random values from continuous distributions including Gaussian, exponential, gamma, and a few more."
+
+**C. Math functions**
+
+- ```math.log()``` gives the natural log (log base e)
+- use double quotes in functions where the input might have an apostrophe
+
+**D. New Functions**
+
+- defining a function creates a variable of the same name
+- you can also use your function inside another function, even calling it multiple times if you want
+
+**E. Definitions and uses**
+
+- function definitions create function objects (so you don't have to keep repeating code)
+- statements inside the function do not get executed until the function is called
+- you should define your functions all upfront, so they're available to you later on in the program (you can't call functions that don't exist yet!)
+
+**F. Flow of execution**
+
+- generally speaking, statements are executed from top to bottom
+    - however, if you call a function the program will go back and run the body statements of that function
+- the story here: you don't necessarily want to read code from top to bottom. Follow the flow of execution!
+
+**G. Parameters and arguments**
+
+- ```math.pow(base,exponent)``` would give you something raised to some other power
+- you can even pass expressions as arguments. For example:
+
+```{r eval=FALSE, engine='python'}
+# Define function
+def print_twice(input):
+    print input
+    print input
+    
+# call it with a normal value
+print('Hi, my name is')
+
+#Returns:
+"Hi, my name is
+Hi, my name is"
+
+# call with an expression
+print('hello'*4)
+
+# returns:
+"hello hello hello hello
+hello hello hello hello"
+```
+
+- don't worry about the name of the parameter...doesn't really matter, other than in defining your function
+
+**H. Fruitful functions and void functions**
+
+- fruitful functions - yield results
+- void functions - perform some action (changing a variable, printing) but return nothing
+- be sure to assign the result of fruitful functions to some variable
+- void functions will return the special value ```None``` if you try to assign them to something
+    - different from the string 'None'
+
+**I. Why functions?**
+
+- creating a new function gives you an opportunity to name a group of statements, making your program easier to read, understand, and debug
+- functions can make a program smaller by eliminating repetitive code.
+- dividing a long program into functions allows you to debug the parts one at a time and then assemble them into a working whole
+- well-designed functions are often useful for many programs. Once you write and debug one, you can reuse it
+
+**J. Debugging**
+
+- "If you are using a text editor to write your scripts, you might run into problems with spaces and tabs. The best way to avoid these problems is to use spaces exclusively (no tabs). Most text editors that know about Python do this by default, but some don't"
+- be sure to save before running! (otherwise you'll be running an older version)
+
+**K. Glossary**
+
+- \textbf{algorithm} = a general process for solving a category of problems
+- \textbf{composition} = using an expression as part of a larger expression, or a statement as part of a larger statement
+- \textbf{pseudorandom} = pertaining to a sequence of numbers that appear to be random, but are generated by a deterministic program
+
+####*Python for Informatics - Chapter 5*
+
+**A. Updating Variables**
+
+- ```while``` syntax:
+
+```{r eval=FALSE, engine='python'}
+n = 5
+while n > 0:
+    print n
+    n = n - 1
+print 'Blastoff!'
+```
+
+- execution flow:
+    1. evaluate the condition, yielding True or False
+    2. If the condition is false, exit the while statement and continue execution at the next statement
+    3. If the condition is true, execute the body and then go back to step 1
+- you can exit a loop with ```break```
+
+**B. Finishing iterations with continue**
+
+- you can use ```continue``` to skip to the next iteration immediately (not executing the rest of the code for that one iteration)
+- check it out:
+
+```{r eval=FALSE, engine='python'}
+while True:
+    line = raw_input('> ')
+    if line[0] == '#':
+        continue
+    if line == 'done':
+        break
+    print line
+print 'Done!'
+```
+
+**C. Definite loops using for**
+
+- a for loop is considered "definite" because it just runs through a set of items until the set is expired
+- check it out:
+
+```{r eval=FALSE, engine='python'}
+friends = ['Joseph', 'Glenn', 'Sally']
+for friend in friends:
+    print 'Happy New Year:', friend
+print 'Done!'
+```
+
+
+**D. Loop patterns**
+
+- loop flow is usually like this:
+    1. initialize one or more variables before the loop starts
+    2. Perform some computation on each item in the loop body, possibly changing the variables in the body of the loop
+    3. look at the resulting variables when the loop completes
+- you might sum selectively with an "accumulator" variable, for example
+- to be fair though, we'd use ```len()``` or ```sum()``` in practice, rather than our own predefined functions
+
+**E. Debugging**
+
+- use binary search to debug:
+    - look at half of program, then half of the half, etc. until you find an error
+    - maybe use print statements so you can trace the program execution
+- for a 100 line program, it will take you log~2~100, rather than 100, lines of checking!
+
+####*Python for Informatics - Chapter 6*
+
+- start at page 79 of the pdf
+
+####*Video 2.1 Welcome to Class*
+
+**A. Constants**
+
+- fixed values such as numbers, letters, strings that do not change
+
+**B. Variables**
+
+- a named place in the memory where a programmer can store data and later retrieve the data using the variable name
+- you can change this stuff later on
+
+**C. Variable Name Rules**
+
+- should start with a letter
+- must consist of letters and numbers and underscroes
+- case sensitive names
+- 
