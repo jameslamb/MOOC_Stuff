@@ -1,0 +1,19 @@
+<center> <h2>Model Thinking - Week 6</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Reading 1: Categorical Models*
+
+[Chapter 3: Models 1.0 Categorical Models](http://vserver1.cscs.lsa.umich.edu/~spage/ONLINECOURSE/R5CategoricalModels.pdf)
+
+**A. Introduction**
+
+- the most basic predicitve models rely on categories
+- categorical model says "how does some subset differ from it's complement (i.e. "everyone else")"?
+- very simple, stark categorical models sometimes have the ability to outpredict exports
+    - consider dividing loan apps by income-to-payment ratio
+
+**B. Variation**
+
+- 
+
+

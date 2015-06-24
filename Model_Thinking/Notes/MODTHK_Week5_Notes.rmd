@@ -1,0 +1,47 @@
+<center> <h2>Model Thinking - Week 5</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Reading 1: Short Primer on Behavioral Economics*
+
+[How Behavioral Economics Differs from Traditional Economics](http://www.econlib.org/library/Enc/BehavioralEconomics.html)
+
+**A. Introduction**
+
+- the standard economic framework ignores or rules out virtually all the behavior studied by cognitive and social psychologists
+- Hebert Simon (1955): maybe agents have "bounded rationality"
+    - a more realistic conception of human problem-solving ability
+- See Kahneman's many writings on this
+    - overconfidence, optimism, extrapolation all defy "rational" thinking
+- people are able to act selflessly
+    - people respond emotionally in *ultimatum games*
+
+**B. Behavioral Finance**
+
+- "finance is perhaps the branch of economics where behavioral economics has made the greatest contributions"
+- financial economics generates sharp, testable predictions abotu observable phenomena
+    - i.e. there are lots and lots of data
+- closed-end mutual funders are much like typical (open-end) mutual funds, except that to cash out of the fund, investors must sell their shares on the open market
+    - market efficiency would say that closed end funds should trade at a price equal to the prices of the underlying securities
+    - instead, they trade at a discount most of the time, and premium occasionally
+    - "closed-end fund discounts are correlated with one another and appear to reflect individual investor sentiment"
+- market efficiency says that stock prices should be unpredictable. But there are some predictions we can make:
+    - stocks in general, but especially small-cap, tend to do well in January and on Fridays (but poorly on Mondays)
+    - existing of "value firms" that earn higher returns
+- people tend to overreact to new information, leading to constant overshoots and "corrections" in asset prices
+- people tend to be more likely to sell increasing stocks ("realize gains") than decreasing stocks ("recognize losses"), even though the tax code favors the latter
+
+**C. Saving**
+
+- "although the standard life-cycle model of savings abstracts from both bounded rationality and bounded willpower, saving for retirement is both a difficult cognitive problem and a difficult self-control problem"
+- dedicated retirement accounts (like 401(k) and IRA) actually lead to incremental savings, not just a shift of savings
+    - potentially because having that dedicated account bolsters people's self-control
+    - you've mentally blocked off that account to be explicitly for retirement savings
+- however, there has been lower participation in 401(k) plans than expected
+    - this is odd, given that the plans essentially represent a cash transfer from the government (and in some cases their employer)
+- ODonoghue and Rabin (1999): "Though hyperbolic people will eventually want to participate in the IRAs (because they are patient in the long run), something always comes up in the short run (where they are very impatient) that provides greater immediate reward. Consequently, they may indefinitely delay starting an IRA"
+- you might improve participation simply by lowering the "psychic barriers" to participation
+    - in most companies, employees who become eligible for the 401(k) plan receive a form inviting them to join.
+    - what if you make it a default opt out instead? That puts the burden of work on people who want to LEAVE, and more are likely just to stay in
+- great list of resources at the bottom of this
+
+####*Video 5.1 - *
