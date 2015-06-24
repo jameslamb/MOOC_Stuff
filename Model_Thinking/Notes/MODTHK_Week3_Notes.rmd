@@ -114,4 +114,228 @@
 
 **C. Cellular Automata**
 
-- 
+####*Reading 5 - Cellular Automata 2*
+
+**A. Is There an Edge?**
+
+- in models of the edge of chaos there is an attempt to detect whether a given rule will tend to imply a system that is either chaotic, stable, or poised somehwere in between
+- the "edge" is not in phase space, but in the space of rules
+    - "if we slightly perturb a rule that generates complexity we will get a rule that either generates chaos or stasis"
+- Wolfram's classification of automata:
+    - fixed
+    - periodic
+    - chaotic
+    - complex
+- Langton's lambda
+    - an attempt to model the edge of chaos as some location on a semi-continuous spectrum
+- from Langton: "complexity occurs at the edge of chaos"
+
+**B. Multiple Edges**
+
+- there is not "an" edge of chaos
+- "Rule 126 tends to create 1's then destroy them"
+- "Everyone one of the rules classified as complex in this space has at least one chaotic neighbor with a lower lambda value and one with a higher value"
+- maybe a different classification:
+    - identity rules
+    - blinker rules
+    - 0-attractor rules
+    - 1-attractor rules
+- attractor rules produce chaos because they have, at their  core, a propensity for creative destruction
+- "stability does not lie at the edge of periodicity"
+- the author's deconstruction, which notes that the majority of chaotic rules and all complex rules belong to "Attractor" sets, lends support to the notion of an edge of chaos
+    - however, not a single edge as usually supposed, but rather a multitude of edges contained within the set of attractor rules
+- Langton's lambda is a sufficient but not necessary condition for interesting behavior
+- consider reading "Computation at the Edge of Chaos" by Christopher Langton
+
+####*Video 3.1 - Aggregation*
+
+**A. "More is Different"**
+
+- You can't always understand the whole by looking at the parts
+- one water molecule can't be wet, can't have viscosity, can't ripple
+    - "wetness is a property of a bunch of water molecules, but not one molecule"
+- "personality, consciousness, cognition" as emergent properties of the "system" of neurons in your brain
+
+**B. A Plan**
+
+- start with aggregations of actions (CLT)
+- "Game of Life" = Single Rule
+    - what if we had a family of rules?
+    - really simple models can produce a wide range of behaviors
+- how do you aggregate preferences (ordered groups)?
+
+**C. Central Limit Theorem**
+
+- if things follow a known distribution, we can make good predictions just on the basis of a small sample
+
+**D. Understand Patterns**
+
+- we can see patterns in the macro structure emerging from micro-level rules and behaviors
+
+**E. Cellular Automata**
+
+- look at different behaviors of cells following very simple rules
+    - any configuration is possible even with just simple rules
+    - we can get patterns, equilibrium, randomness, complexity
+
+**F. Big Picture**
+
+- most interesting stuff in social science is "groups of people"
+    - understand how the parts work
+    - understand how to add them up
+
+####*Video 3.2 - Central Limit Theorem*
+
+**A. Introduction**
+
+- probability distribution = all possible states (number of outcomes) and associated probabilities
+    - probabilities add up to 1
+- CLT = "If I add up a bunch of independent events, you get a normal probability distribution of outcome frequencies"
+
+**B. Flip Coin 2 Times**
+
+- what is the probability?
+    - TT = 1/4
+    - 1H = 1/2
+    - HH = 1/4
+- 4 flips?
+    - TTTT = 1/16
+    - 1H = 4/16
+    - 2H = 6/16
+    - 3H = 4/16
+    - HHHH = 1/16
+
+**C. Binomial Distribution**
+
+- $\mu$ = Mean = pN, where p is the probability of success and N is the number of trials
+- $\sigma$ = std deviation = $\frac{\sqrt{N}}{2}$
+
+<img src="http://blog.kanbanize.com/wp-content/uploads/2014/07/Standard_deviation_diagram.png" width=75% height=50%x>
+
+- CLT gives us not just the average, but the "spread"
+
+**D. What about the more general case?**
+
+- for binomial dis with arbitrary p:
+    - $\mu$ = Mean = pN, where p is the probability of success and N is the number of trials
+    - $\sigma$ = std deviation = $\sqrt{p(1-p)N}$
+
+**E. An Example**
+
+- Boeing 747: 380 seats
+- 90% show up rate
+- sell 400 tickets
+- what is the likelihood of having more than 380 show up?
+    - mean = 360 tickets
+    - sd = SQRT(.9*.1*400) = 6
+- 380 = 20/6 s.d. = 3.33 s.d
+
+**F. Formal CLT Definition**
+
+- add random variables:
+    - independent
+    - finite variance
+- sum to a normal distribution
+- a lot of the predictability of the world comes from the facts that you should get things averaging out to normal-ish behavior
+
+**G. Is Everything Normally Distributed?**
+
+- definitely not
+- stock prices are not:
+    - fat tails as a result of non-independence
+    - gives you more big events or small events than might be expected for a normally-distributed variable
+
+####*Video 3.3 - Six Sigma*
+
+**A. What is It?**
+
+- Using stats to make production processes more predictable
+- outside of 6 sigma?
+    - 3.4 in a million
+- Six Sigma might give you a "sigma target"
+    - your goal is to reduce the standard deviation
+    - if you do this, you can be very very confident in the quality of your work
+    - driving "continuous improvement"
+
+####*Video 3.4 - Game of Life*
+
+**A. Why Learn This?**
+
+- GOL is a toy model, just meant to show off some key concepts
+- [Conway's game of life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life)
+     - a particular type of cellular automata model
+
+**B. Running the game**
+
+- "seeding" the model = setting initial conditions
+- use netlogo to set up
+- simple things following simple rules can aggregate into complicated and fascinating patterns
+- The "F-pimento" seed results in stunning behavior.
+    - the blocks seem to grow, multiple, live and explore the entire space
+- four classes of outcomes from this model:
+    - fixed equilibrium
+    - simple alternation
+    - randomness
+    - complex patterns
+- anything a computer can do can be created by the game of life
+- what do we get?
+    - organization
+    - emergence (functionalities appear: gliders, glider guns, counters, computers)
+    
+####*Video 3.5 - Cellular Automata*
+
+**A. Some History**
+
+- jon von neumann invented cellular automata
+    - von neumann was also one of the founders of game theory and economic growth theory
+- Stephen Wolfram - *A New Kind of Science*
+    - cellular automata as "computation, inductive" approach to learning about the world
+    - logic (simple rules produce incredible phenomena
+
+**B. Making it Work**
+
+- we can study every single rule, see what they produce
+
+**C. It From Bit**
+
+- maybe all complexity comes from simple binary interactions
+- John Wheeler: "It from bit. Every particle, every structure, derives it's structure from the answers to yes/no questions. All things physical are information-theoeretic in origin, and this is a participatory universe."
+    - the bottom of reality is binary switches
+- the cellular automata model can produce pretty much anything
+
+**E. Langton's lambda**
+
+- Langton's lambda tells us the percentage of bits that are on
+- 0: die off
+- 1/8: blink
+- 4/8: chaos
+- 5/8: complex
+- middle range of lambda's is where you see random or complex behavior
+    - chaos and complexity comes from "intermediate levels of interdependence"
+- complexity comes from a lot of interdependence
+
+**F. What Do We Learn**
+
+- simple rules combine to form anything
+- "it from bit"
+- complexity and randomness require interdependency
+
+####*Video 3.6 - Preference Aggregation*
+
+**A. This is Difffernet**
+
+- not just "adding things up"
+- we have a bunch of orderings (e.g. A > B > C, C > A > B, etc.)
+- we are looking for "revealed preferences"
+    - you get an ordering within a certain class or limited set of options
+- preferences must satistfy transitivity
+    - e.g. if A > B and B > C, A > C
+- transitive preference set = n!
+    - so for n = 3 possibilities, you get 3 x 2 x 1 = 6 possible transitive preferences
+- you can get irrational, non-transitive communal preferences from aggregation of rationa, transitive preferences
+- Condorecet's Paradox:
+    - each person has rational preferences
+    - when we vote, non-rational outcomes prevail
+- crowds are NOT guaranteed to be rational (not even a little bit, oh lord)
+- main takeaway: observed macro phenomena are not always representative of any particular individual micro units
+    - micro units with one nature can create (maybe inadvertently) very different and interesting macro behavior through their interactions
