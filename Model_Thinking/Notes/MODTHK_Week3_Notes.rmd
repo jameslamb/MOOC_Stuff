@@ -114,4 +114,10 @@
 
 **C. Cellular Automata**
 
+- rule table = mapping for each possible input state to an output state
+- in this simple rule example;
+    - "...even though individual behavior is based on tha actions observed at three sites, coherent triangular structures emerge that encompass far more sites
+- all finite, deterministic systems are guaranteed to cycle, but the lengths of these cycles can be relatively long
+- "simple local interactions among agents can result in interesting aggregate behavior"
+- the behavior of a single rule can fall into different broad classifications depending on the initial conditions
 - 
