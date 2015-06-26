@@ -1,0 +1,42 @@
+<center> <h2>Interactive Python - Week 4</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Video 4.1 - Lists*
+
+**A. Sequence Types in Python**
+
+- the most common of these is the list type
+- lists are in square brackets
+    - empty: ```mylist = []```
+    - not empty: ```mylist = ['hello','goodbye']```
+    
+**B. Accessing Lists**
+
+- you can use ```len(my_list)``` to extract the number of list elements
+- both lists and strings are sequences, so there is a lot of overlap in the functions you use
+- you can use [] indexing (just like with strings) to get at certain elements
+- unlike strings, lists are mutable
+    - you can use indexing to change elements
+- "good programmers keep their lists homogenous"
+    - i.e. only one type per list
+
+####*Video 4.2 - Keyboard Input*
+
+**A. The Echo program**
+
+- http://www.codeskulptor.org/#examples-keyboard_echo.py
+- keyboard up and keyboard down events
+- simplegui calls the draw handler 60x per second
+- event handlers for the events tell Python what to do when certain events happen
+- keys are mapped to integer "key codes"
+    - to get that variable, use something like ```simpleguid.KEY_MAP["left"]```
+
+
+####*Video 4.3 - Motion*
+
+**A. A Bit of Calculus**
+
+- speed ("velocity") = change in position per unit of time
+- position = initial position + velocity * times
+- 
+
