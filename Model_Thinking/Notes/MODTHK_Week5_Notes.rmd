@@ -44,4 +44,31 @@
     - what if you make it a default opt out instead? That puts the burden of work on people who want to LEAVE, and more are likely just to stay in
 - great list of resources at the bottom of this
 
-####*Video 5.1 - *
+####*Video 5.1 - Thinking Electrons: Modeling People*
+
+**A. Introduction**
+
+- humans are purposeful actors with a diverse set of needs and preferences
+- frameworks:
+    - Rational (modeling close to ideal)
+    - Behavioral (modeling close to reality)
+    - Rule Based (no psychology)
+- sometimes framework choice matters, sometimes it doesn't
+
+**B. Rational Actor**
+
+- someone is trying to optimize some objective function
+    - example OJ: Utility = C^0.5^L^0.5^
+
+**C. Behavioral**
+
+- "behavioral revolution" in economics is recent...but it's been going on in Psychology for 100 years
+- neuroscience
+
+####*Video 5.2 - The Rational Actor Model*
+
+**A. How It Works**
+
+- People have an objective
+    - optimize toward that objective
+- 
