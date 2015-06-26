@@ -307,3 +307,64 @@ print 'In %d years I have spotted %g %s.' % (3, 0.1, 'camels')
 - as you get better at programming, ask yourself:
     - "What could go wrong here?"
     - "What crazy thing might our user do to crash our (seemingly) perfect program?"
+
+####*Python for Informatics - Chapter 7*
+
+**A. Files: Persistence**
+
+- so far, we've learned how to write programs and communicate out intentions to the CPU
+- we've also learned how to create and use data structures in main memory
+- files = "secondary memory"
+    - permanent records on disk
+
+**B. Opening Files**
+
+- "opening" the file, in Python, just means creating a connection and verifying that the file is there
+- opening returns a "handle" used to read the data, not the data itself
+    ```file1 = open('stuff.txt')```
+- the newline chracter = "\n"
+    - this is a single character
+- you might consider reading only a few lines at a time (to preserve space in main memory)
+
+**C. Searching Through a File**
+
+- a short script for only printing lines beginning with "From:"
+
+```{r eval=FALSE, engine='Python'}
+
+fhand = open('mbox-short.txt')
+for line in fhand:
+    line = line.rstrip()
+    if line.startswith('From:') :
+        print line
+```
+
+- the ```find()``` method returns -1 if the string is not found
+- consider using try and except when asking for user input
+- Quality Assurance = people who do crazy stuff to software to see how people might try to break it
+- the ```exit()``` function terminates the program
+- protecting the open call is a good example of the proper use of try and except in a Python program. We use the term "Pythonic" when we are doing something the "Python way".
+- programming is part engineering and part art
+
+**D. Writing Files**
+
+- to write a file, open it with mode 'w'
+
+```{r eval=FALSE, engine = 'Python'}
+fout = open('output.txt', 'w')
+print fout
+
+# write a line to the file
+line1 = "This here's the wattle, \n"
+fout.write(line1)
+
+## close the connection
+fout.close()
+```
+
+**E. Debugging**
+
+- use "\t" for a tab
+- the built-in function ```repr``` can be useful. It takes any object as an argument and returns a string representation of the object.
+- 
+

@@ -1,0 +1,76 @@
+<center> <h2>Model Thinking - Week 4</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Video 4.1 - Introduction to Decision Making*
+
+**A. Decision Models**
+
+- Why do I care?
+    - Normative: make us better at deciding
+    - Positive: predict behavior of others
+- normative involves the word "should"
+
+**B. Two Types of Models**
+
+- multi-criterion models
+- probabilistic
+
+**C. Multi-Criterion Models**
+
+- pick an "ideal" point? (intersection of multiple criterion)
+- "spatial decision" = "how close it is to your preferences"
+    - a spatial decision would be made under certainty
+
+**D. Probabilistic**
+
+- decision trees?
+    - compute "value of information"
+    - "if the uncertainty went away, would our decision change?"
+    - kind of variable importance
+    
+####*Video 4.2 - Multi-Criterion decision Making*
+
+**A. Main Idea**
+
+- you have a bunch of choices along different dimensions
+- qualitative: a "vote" by comparing relevant criteria
+- quantitative: maybe more objective
+    - maybe do the "voting" method, but with weights?
+- we don't want models to tell us what to do
+    - the goal is just to make better decisions
+
+####*Video 4.3 - Spatial Choice Models*
+
+**A. Main Idea**
+
+- you have an "ideal point"
+    - pick whatever is "closest" to that point
+    - this is kind of how people vote, right?
+    - you never get your ideal candidate
+
+**B. Ramp It Up**
+
+- Andrew Gelman ideological chart of Supreme Court justices
+- think about taking "distances" along multiple dimensions (vectors of "differences")
+- positive:
+    - you can look at choices and see what someone's ideal point was
+    - this is a "revealed preference" approach to the problem
+
+####*Video 4.4 - Probability: The Basics*
+
+**A. Intro to Probability**
+
+- probabilities must have these properties:
+    - probabilities must be in the set [0,1]
+    - sum of all possible outcomes equals 1
+    - if A subset B, then Prob(B) >= Prob(A)
+- and outcome is a thing that can happen. An event is a subset of outcomes
+
+**B. Classical Probabilities**
+
+- Dice, cards, draws from a bag
+
+**C. Frequency**
+
+- we don't know the "pure" probabilities, but can make estimates on the basis of observerd frequencies
+- 

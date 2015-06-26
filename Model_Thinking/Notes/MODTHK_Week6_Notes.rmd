@@ -14,6 +14,31 @@
 
 **B. Variation**
 
-- 
+- mean = "the average"
+- variance = "how much the values differ from the mean"
+    - variance equals the the sum of squared distances from the mean
+- R^2^ = "the perecentage of the variation explained when the data gets binned into categories"
+    - Variance Explained / Total Variance
 
+####*Reading 2 - Linear Models*
+
+**A. Basics of Linear Models**
+
+- the canonical model: y = mx + b
+    - y is the dependent, x is independent
+
+**B. Why Everything is Linear (at least for a while)**
+
+- any curve can be approximated as a combination of linear segments
+    - "the curvier a function becomes, the shorter the linear segments must be to approximate that curve"
+    - the fact that we can approximate curves with line segments allows social scientists to use linear models to make sense of nonlinear phenomena
+
+**C. Constructing a Multivariable Linear Model**
+
+- the regression line = "the line that minimizes the total distance of all of the data points to a straight line"
+- distance from a point to the line is not just noise:
+    - it also captures all of the things we've omitted from the model
+- a "linear" model doesn't have to produce a straight line:
+    - it can allow for linear relationships between each of the indepdentn variables and the dependent variable
+    - the resulting prediction will be the net impact
 
