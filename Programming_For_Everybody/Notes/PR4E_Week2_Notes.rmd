@@ -1,7 +1,7 @@
 <center> <h2>Programming for Everybody - Week 2</h2> </center>
 <center> <h3>---------------------------------------</h3> </center>
 
-####*Video 2.1 Welcome to Class*
+####*Video 2.1 Expressions*
 
 **A. Constants**
 
@@ -17,4 +17,14 @@
 - should start with a letter
 - must consist of letters and numbers and underscroes
 - case sensitive names
+
+**D. Math**
+
+- if you throw in a floating point number anywhere, the math from that point on in the expression is done in floating point
+
+####*Video 2.2 - Type*
+
+**A. What does "Type" Mean?**
+
+- Python changes the meaning of operators (like the "+") based on the types of the operands
 - 
