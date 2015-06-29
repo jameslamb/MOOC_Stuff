@@ -1,0 +1,88 @@
+<center> <h2>Model Thinking - Week 7</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Reading 1: Tipping Points*
+
+[Tipping Points](http://www.cscs.umich.edu/~spage/ONLINECOURSE/R7Tips.pdf)
+
+####*Reading 2: Diffusion and SIS*
+
+[Tipping Points](http://www.cscs.umich.edu/~spage/ONLINECOURSE/R7Diffusion.pdf)
+
+####*Reading 3: [Lamberson and Page: Tipping Points (INTRO ONLY)](http://www.santafe.edu/research/working-papers/abstract/aecbfc4c6f63132ad19706066c864f27/)
+    
+####*Video 7.1 - Tipping Points*
+
+**A. Notes**
+
+- "tipping" = small changes lead to big effects
+- when people talk about tipping points, they mean "kinks in curves"
+- a tipping point is a when a small change has a large effect
+    - exponential growth can look like a tipping point, but it really isn't that
+    - that's just the "inevitable process of growth"
+- we're going to explore two models in this space
+- types of tips:
+    - direct tips: an action tips that same entity (battle to war)
+    - contextual tips: environmental changes enable some other change
+- tipping might be thought of as moving between Wolfram's four classes of system equlibria (stable, complex, random, repeating)
+
+####*Video 7.2 - Percolation Models*
+
+**A. How It Works**
+
+- "the essence of modeling is to simplify things"
+- the question: will rainwater percolate?
+- this model can be applied to Forest Fires (see the model in NetLogo)
+- the idea here is that water can only go from one open place to another:
+    - think about a frog hopping across a fire through connected lilipads
+
+**B. Fertility of Models**
+
+- density of trees and relationship with fire spread
+- could also be applied to bank failures
+    - the density of lending relationships matters
+- you might consider this in the context of country failures (e.g. sovereign default)
+
+**C. Information Percolation**
+
+- imagine a network of people
+- transition probability - probability that when you hear something, you tell your friends
+- the distribution of rumors is probably nonlinear
+    - this is a result of information being spread through networks
+
+**D. Innovation**
+
+- why do we see a bunch of innovations in math and science all at once?
+- think about it like "getting from point A to point B" by stitching together bits of knowledge
+- think about innovation:
+    - new technology starts "filling in intermediate squares"
+    - at some point, the system tips and there are lots and lots of possible paths to the new invention
+    - this explains a bunch of people inventing the same thing at about the same time
+
+####*Video 7.3- Contagion Models 1: Diffusion*
+
+**A. The SIS Model**
+
+- SIS: "susceptible, infected, susceptible"
+- SIR: "susceptible, infected, recovered"
+- take some probability of transmission of the disease, probabilities of people with and without the disease meeting
+- contact rate: how often do ANY people meet?
+- the dynamics
+    - early: few people who have it (can't spread fast)
+    - middle: lots who have it, lots who don't (spreads fast)
+    - end: lots who have it, few who don't (spread slows)
+- diffusion equation:
+    - $W_{t+1} = W_{t} + (Nc)\tau\frac{W_{t}}{N}(\frac{N-W_{t}}{N})$
+- this is NOT a tipping point
+    - this is natural diffusion
+- just because you see a kink doesn't mean there's a tip
+
+####*Video 7.4 - Contagion Models 2: SIS Model*
+
+**A. The Difference**
+
+- unlike in pure diffusion, in this model you can become susceptible (second S) again after having had the disease once
+- the equation is now:
+    - $W_{t+1} = W_{t} + (Nc)\tau\frac{W_{t}}{N}(\frac{N-W_{t}}{N}) - aW_{t}$
+    - where $aW_{t}$ captures the people who get re-infected
+- re-written:

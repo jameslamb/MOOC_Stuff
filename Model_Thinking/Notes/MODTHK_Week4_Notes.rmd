@@ -73,4 +73,49 @@
 **C. Frequency**
 
 - we don't know the "pure" probabilities, but can make estimates on the basis of observerd frequencies
+    - count things and figure out the probability from there
+
+**D. Three Types of Probability**
+
+- classical (dice)
+- frequency (observations)
+- subjective (model-based)
+
+####*Video 4.5 - Decision Trees*
+
+**A. Decision Tree Models**
+
+- this is a "be better thinkers" type of model
+- we can also take observed choices and back out people's preferences
+- draw branches for choices, choose the branches with best payoff
+- one node for each decision
+- consider truncating
+    - you can figure out the decision right away
+- the tree helps you evaluate decisions
+
+**B. Inferring Probabilities**
+
+- figure out what probabilities would justify decisions that have already been made (or at least proposed)
+
+**C. Inferring Payoffs**
+
+- given known probabilities and decisions, figure out what the agent's payoffs must have been (i.e. what payoffs or range of payoffs justify the decisions observed)
+
+####*Video 4.6 - Value of Information*
+
+**A. Value of "Certainty"**
+
+- trees and other stuff in this module is about making decisions under uncertainty
+- example: "40% chance that the car company offers $1000 cash back next month. Should you buy now or rent ($500 cost) for a month?"
+- what is the value of knowing if they do the program?
+- value without information:
+    - Buy = $0
+    - Rent = (.4)(500) + (.6)*(-500) = -100 
+- Value with information:
+    - Buy = $0
+    - Rent = (0.4)(500) + (0.6)(0) = $200
+- you should be willing to pay $200 for this information
+    - think of value of information as "buying your way out of uncertainty"
+    - need to way this price against your potential payoffs
+- the value of information is the difference between your payoff without that uncertainty and your payoff without information
 - 

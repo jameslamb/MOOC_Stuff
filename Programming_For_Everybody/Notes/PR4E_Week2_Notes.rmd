@@ -27,4 +27,17 @@
 **A. What does "Type" Mean?**
 
 - Python changes the meaning of operators (like the "+") based on the types of the operands
+
+**B. TraceBack Errors**
+
+- you try to combine variables of different types, Python is not going to be happy with you
+- a TraceBack error means you did something wrong
+- you can use the ```type()``` function to see the types of objects
+- it will do some implicit conversions (like when you combine an integer and floating operand)
+- you can also comvert between strings and numbers
+
+**C. User Input**
+
+- calling ```raw_input()``` prompts the user to enter something
+- this will return a string (no matter what is typed in)
 - 

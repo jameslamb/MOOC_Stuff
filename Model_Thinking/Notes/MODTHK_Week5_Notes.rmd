@@ -71,4 +71,168 @@
 
 - People have an objective
     - optimize toward that objective
-- 
+- games = "strategic interactions"
+    - my choices rely on your choices
+
+**B. Greed**
+
+- does rationality mean selfishness?
+    - no not necessarily
+    - your objective function is not necessarily "maximize only my own wealth"
+- there's nothing intrinsic about rationality that assumes selfish preferences
+    - you can of course have altruistic preferences
+
+**C. Decisions vs. Games**
+
+- decision: objective depends only on own action
+- game: objective (your payoff) depends on actions of others
+- a lot of game theory has you making choices assuming that your opponent will make rational choices
+
+**D. When we Make Optimal Choices**
+
+- large stakes
+- it's repeated
+- group decisions
+- optimal choices can be easy to make
+
+**E. Why Make Rationality Assumptions?**
+
+- it provides a useful benchmark
+    - maybe the most important in modeling people
+    - it's very unique (testable)
+- In practice, using math to find optimal points is easy
+- irrationality is not analytically tractable (in all cases)
+- even if people make mistakes, if there's no bias rationality might be a good predictor of the mean
+- there tend to be places where people systematically deviate from rationality
+
+####*Video 5.3 - Behavioral Models*
+
+**A. Background**
+
+- read *Thinking Fast and Slow*!!! (Kahneman)
+- the brain has two processes:
+    - a slow, rational one
+    - a fast, emotional/intuitive one
+- also *Nudge* (Thaler and Sunstein)
+
+**B. Prospect Theory**
+
+- people are risk-averse over gains and risk-loving over losses
+    - you would take a sure $400 gain over 50% chance at $1000
+    - most, though, also take a 50% chance at $1000 loss over sure $400 loss
+
+**C. Hyperbolic Discounting**
+
+- timing matters
+- people would prefer $1000 today to $1005 tomorrow
+    - but they would take $1005 in 366 days over $1000 in 365 days
+- "we discount the near future more than more distant future"
+    - a bias towards instant gratification
+
+**D. Status Quo Bias**
+
+- a systematic bias towards the current state of the world
+    - opt-out savings plans have higher participation than opt-in
+    - ditto for organ donation
+
+**E. Base Rate Bias**
+
+- "if you ask people to think about one number, then ask a question about something unrelated, the two numbers tend to be close to each other"
+- this is weird
+
+**F. Lots of Biases**
+
+- WEIRD = "Western, Educated, Industrialized, Rich, Developed"
+    - not sure if the biases hold true across cultures
+- people learn!
+    - if the stakes are large, people will tend to learn and biases will go away
+- some of these biases are very computationally difficult
+    - this does not seem like a good reason not to include them in models
+- consider starting with rationality, then including biases only if you think they will be very important (not great)
+    - this is "rational minus" or "rational plus" modeling
+
+####*Video 5.4 - Rule Based Models*
+
+**A. How it Works**
+
+- assume that people follow some rule or set of rules, see what happens if they do
+- "bias"/"optimization" can be rules, but that's not exactly what we're talking about
+- fixed vs. adaptive rule-based behavior
+- decision context vs. game context
+
+**B. Some Ideas**
+
+- Random choice
+    - a good benchmark
+- fixed rules may not be optimal
+- Moore Machines
+    - flow of information between two agents
+    - change your state based on other agent's state
+- grim trigger = "lock-in"
+
+**C. Adaptive Decisions Rules**
+
+- gradient
+    - keep trying things in directions that are working
+- random search
+    - keep trying different things (not necessarily in one direction)
+- Some other adaptive rules:
+    - best response
+    - mimicry
+
+**D. Observations about Rule-Based Behavior**
+
+- optimal choices could be easy
+- simple rules often can get exploited
+    - need to define boundaries
+
+**E. Approaches**
+
+- write down the rules
+- they're easy to model
+- try to capture the main effects
+- anything you might right down will be ad hoc
+    - it will be influenced by your own behaviors (sample size of 1)
+- remember that simple rules can be exploited
+
+####*Video 5.5 - When Does Behavior Matter?*
+
+**A. Does it Matter?**
+
+- how agents act: rationally, behaviorally, according to simple rules
+
+**B. Market Example**
+
+- it might not matter how we model behavior
+- if you're fully informed, your behavior will be predictable
+- optimizing behavior and simple behavioral behavior might not be very different
+- "zero intelligence agents"
+    - buyers pick a random amount less than their max
+    - sellers pick a random amount more than their min
+- with ZIAs, you STILL get a price near the rational or behavioral price
+- behavior is not a big deal in markets, but it is in games
+
+**C. Race to the Bottom**
+
+- pick a number in [0,100]
+- closest to 2/3 of mean wins
+    - rational: pick 0
+    - biased: guess 50
+    - rule-based: 2/3(50) = 33
+- the rule-based stuff, at its limit, leads you to that rational-behavior answer
+- people start with a "base rate bias" answer of 50, then start making best response decisions
+
+**D. Two "Rational" People and One Irrational**
+
+- R = (2/5)X
+- one irrational person leads to a non-zero answer from the rational people
+
+**E. Takeaway**
+
+- rational behavior, bias, simple rules
+    - if the answers are similar, we might say "the answer is invariant to behavior"
+- why we model:
+    - be more intelligent citizens of the world
+    - use and understand data
+    - get the logic right
+    - design/strategize

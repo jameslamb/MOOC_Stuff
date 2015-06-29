@@ -1,0 +1,20 @@
+<center> <h2>Model Thinking - Week 8</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Reading 1: Tipping Points*
+
+[Tipping Points](http://www.cscs.umich.edu/~spage/ONLINECOURSE/R7Tips.pdf)
+
+####*Reading 2: Diffusion and SIS*
+
+[Tipping Points](http://www.cscs.umich.edu/~spage/ONLINECOURSE/R7Diffusion.pdf)
+
+####*Reading 3: [Lamberson and Page: Tipping Points (INTRO ONLY)](http://www.santafe.edu/research/working-papers/abstract/aecbfc4c6f63132ad19706066c864f27/)
+    
+####*Video 8.1 - *
+
+
+    - you might only find local optima
+- Big Coefficient = "climbing the current hill"
+     - can potentially blind your thinking as a policymaker
+- New Reality = "moving to a taller hill"
