@@ -42,8 +42,64 @@
 - output increases linearly in the savings rate:
     - a country that saves twice as much will have twice as much output
     - "the number of machines in equilibrium increases with the square of the savings rate and output depends on the square root of the number of machines"
-- so what is the irony? "The basic grwoth model eventually resutls in a fixed level of output, i.e. no growth
+- so what is the irony? "The basic growth model eventually results in a fixed level of output, i.e. no growth
+- eventually, you are investing just enough to replace depreciated stock, and the model stalls
+- how do we break out? innovation (technological progress)
 
+**D. The Solow Growth Model**
+
+- differences:
+    - applies to any amount of labor
+    - assumes labor and capital have diminishing returns to scale
+    - assumes a technological sophistication parameter (TFP) that changes over time
+- The core Solow model output function looks like this:
+    - Output: $F(K, L, A(t)) = A(t)L^{\beta}K^{1-\beta} with \beta \in (0,1)$
+- the exponents of K and L sum to 1
+    - "if both labor and capital are doubled, output will also double"
+    - this gives "constant returns to scale"
+- a second contribution to growth:
+    - *the improved technology creates the posisbility of investing in more capital to produce even more growth*
+- remember that equilibrium comes at the point where "the loss due to depreciation equals new investment in capital"
+- the innovation multiplier = "Innovation, changes in A(t) increase output both by directly making labor and capital more productive and by creating incentives to invest in more capital
+- the model does produce sustained growth, but it will be slowed by replacement time
+
+**E. The Catchup Model of Growth**
+
+- the natural drags on growth cry "nonlinearity" in growth forecasts
+    - extrapolation is not going to work here
+- "the advantage of backwardness" --> the less capital a country has today, the faster it can grow
+    - the country is not yet experiencing severe slowdowns in the marginal productivity of capital
+
+**F. The Limits of Extraction**
+
+- Schumpeter's creative destruction (the replacement of old technologies with new) "lies at the core of growth"
+    - "the car replaced the horse, and that change destroyed hundreds of supporting industries at the same time that it created hundreds more"
+- extraction will limit growth and innovation will drive it
+- prosperous countries have strong central governmetns that promote pluralism:
+    1. the strong center creates stability (if you buy stuff you keep it)
+    2. pluralism prevents extraction by elites
+    3. puralism plus stability promotes innovation and creative destruction
+
+**G. Lags Between Innovation and Growth**
+
+- shocks to technology have two effects:
+    - the direct effect increases growth by making the economy more productive with what it has
+    - the indirect effect induces further investment (takes longer)
+
+**H. Endogenous Growth**
+
+- endogenous = produced within the model
+- Weitzman - "generation and recombination of ideas"
+    - diversity in the product market and the labor market result in more ideas that can bump into one another producing ever more growth
+
+**I. Summary**
+
+- the simple models presented here give two explanations for growth:
+    - growth from investment
+    - growth from innovation
+- on model fertility:
+    - consider starting with existing models, applying them to other domains, and then taking guidance from where exactly they and their assumptions fail
+- 
 
 ####*Video 8.1 - Introduction to Growth *
 
