@@ -1,20 +1,60 @@
 <center> <h2>Model Thinking - Week 8</h2> </center>
 <center> <h3>---------------------------------------</h3> </center>
 
-####*Reading 1: Tipping Points*
+####*Reading 1: Economic Growth*
 
-[Tipping Points](http://www.cscs.umich.edu/~spage/ONLINECOURSE/R7Tips.pdf)
+[Economic Growth](http://modelthinker.files.wordpress.com/2013/09/r8growth.pdf)
 
-####*Reading 2: Diffusion and SIS*
+**A. A Model of Growth**
 
-[Tipping Points](http://www.cscs.umich.edu/~spage/ONLINECOURSE/R7Diffusion.pdf)
+- the models have three parts: labor, physical capital, output
+- output = f(labor, physical capital)
+    - if invested, output gets turned into more physical capital
+    - "the more output turned into physical capital, the more productive labor will be. However, any output that's invested cannot be consumed."
+- why use fixed rules in growth models?
+    - models with fixed rules are easier to analyze
+    - by varying the fixed rules we'll gain some insights into what a model optimal rule will look like
+- linearity tends to become the exception not the rule as models have more moving parts
 
-####*Reading 3: [Lamberson and Page: Tipping Points (INTRO ONLY)](http://www.santafe.edu/research/working-papers/abstract/aecbfc4c6f63132ad19706066c864f27/)
+**B. A Simple Growth Model**
+
+- you probably get decreasing returns to scale as you increase capital
+    - i.e. production is described by a concave function
+- the basic model has just two equations:
+    - $O_{t} = f(K) = AK_{t}^{\alpha}$
+    - $K_{t+1} = K_{t} + I_{t} - dK_{t}$
+    - $C_{t} = O_{t} - I_{t}$
+    - $I_{t} = sO_{t}$
     
-####*Video 8.1 - *
+**C. The Irony of Growth**
+
+- to continue to have growth, the society needs to build more and more machines
+- the added benefit of having more machines decreases (decreasing returns!)
+- "so long as savings exceeds depreciation, the capital stock will grow as will output"
+- two observations:
+    1. the cost of depreciation increases linearly in the number of machines
+    2. Output increases at a declining rate in the number of machines
+- where does growth stop?
+    - at the point where the amount of capital produces a level of output that implies depreciation equal to investment
+    - this is the "long run equilibrium"
+- solving for LR equilibrium:
+    - $20\sqrt{M^{*}} = 0.1M^{*}$
+- output increases linearly in the savings rate:
+    - a country that saves twice as much will have twice as much output
+    - "the number of machines in equilibrium increases with the square of the savings rate and output depends on the square root of the number of machines"
+- so what is the irony? "The basic grwoth model eventually resutls in a fixed level of output, i.e. no growth
 
 
-    - you might only find local optima
-- Big Coefficient = "climbing the current hill"
-     - can potentially blind your thinking as a policymaker
-- New Reality = "moving to a taller hill"
+####*Video 8.1 - Introduction to Growth *
+
+####*Video 8.2 - Exponential Growth *
+
+####*Video 8.3 - Basic Growth Model *
+
+####*Video 8.4 - Solow Growth Model *
+
+####*Video 8.5 - Will China Continue to Grow? *
+
+####*Video 8.6 - Why Do Some Countries Not Grow? *
+
+####*Video 8.7 - Piketty's Capital: The Power of a Simple Model *

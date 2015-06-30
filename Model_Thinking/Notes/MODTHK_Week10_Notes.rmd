@@ -1,0 +1,16 @@
+<center> <h2>Model Thinking - Week 10</h2> </center>
+<center> <h3>---------------------------------------</h3> </center>
+
+####*Reading 1: Markov Processes*
+
+[Markov Processes](http://www.cscs.umich.edu/~spage/ONLINECOURSE/R10Markov.pdf)
+    
+####*Video 10.1 - Markov Models*
+
+####*Video 10.2 - A Simple Markov Model*
+
+####*Video 10.3 - Markov Model of Democratization*
+
+####*Video 10.4 - Markov Convergence Theorem*
+
+####*Video 10.5 - Exapting the Markov Model*
