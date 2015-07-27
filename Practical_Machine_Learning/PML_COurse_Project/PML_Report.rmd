@@ -1,10 +1,11 @@
 ---
 output:
-    html_document:
-        theme: cerulean
-        fig_width: 6
-        fig_height: 5
-        keep_md: true
+  pdf_document: default
+  html_document:
+    fig_height: 5
+    fig_width: 6
+    keep_md: yes
+    theme: cerulean
 ---
 
 <center> <h2>A Preliminary Attempt at Qualitative Activity Recognition Using Practical Machine Learning</h2> </center>
@@ -133,7 +134,7 @@ for (i in 8:ncol(testdata)){ testdata[,i] <- as.numeric(testdata[,i])}
 rm(i);
 ```
 
-Next, I moved on to feature selection. The authors of the support paper use a corrleation-based algorithm to identify key features. I decided to employ a more conservative (data-preserving) filter. I used the ```nearZeroVar()``` function in the ```caret``` package to identify the predictors in the training dataset with zero or near-zero variance. Models are fit on the basis of observed covariance, which by definition requires non-negligible variance in the predictors.
+Next, I moved on to feature selection. The authors of the support paper use a correlation-based algorithm to identify key features. I decided to employ a more conservative (data-preserving) filter. I used the ```nearZeroVar()``` function in the ```caret``` package to identify the predictors in the training dataset with zero or near-zero variance. Models are fit on the basis of observed covariance, which by definition requires non-negligible variance in the predictors.
 
 ```{r sec1nearzero, echo=TRUE, eval=TRUE, cache=TRUE, message=FALSE, warning=FALSE}
 ## load the caret package
@@ -224,7 +225,7 @@ On the initial run, I used the option do.trace=T and 1000 trees to watch the pro
 ```{r sec3rforest, echo=TRUE, eval=TRUE, cache=TRUE, message=FALSE, warning=FALSE}
 ## Call randomForest from the randomForest package
 library(randomForest)
-## mod2 <- randomForest(y=as.factor(traindata$classe), x=traindata[,-53], ntree=1000, do.trace=T) ## verbose...see the trace
+##mod2 <- randomForest(y=as.factor(traindata$classe), x=traindata[,-53], ntree=350, do.trace=T) ## verbose...see the trace
 mod2 <- randomForest(y=as.factor(traindata$classe), x=traindata[,-53], ntree=1000)
 
 ## put the trace in a dataframe

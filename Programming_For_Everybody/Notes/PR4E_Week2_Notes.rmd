@@ -40,4 +40,34 @@
 
 - calling ```raw_input()``` prompts the user to enter something
 - this will return a string (no matter what is typed in)
+- useful programs:
+    - take some inputs
+    - do stuff to it
+    - produce some outputs
+
+**D. COmmenting in Python**
+
+- use the "#" character to comment
+- using commenting is a good way to do debugging
+
+**E. Choosing variable Names**
+
+- you should choose mnemonic names to make your programs more readable
+- mnemonic = "memory aid"
+- well-named variables often "sound" so good that they must be keywords
+    - always write code as if the person you're giving it to is a psychopath who knows your address
+
+####*Video 2.3 - Piazza*
+
+**A. What it Is**
+
+- Pooja Sankar - computer science grad from IIT
+- an online conversation platform
+    - she picked up Ruby on Rails and HTML/CSS in 10 days
+- only $50-$100 for server space at first
+- you don't always want growth  right away
+    - she opted to stay small to isolate the users you want and keep working on development
+    - if you grow too fast, it might crash and burn
+- she likes to walk in isolation to clear her mind
 - 
+

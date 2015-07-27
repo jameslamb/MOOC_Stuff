@@ -366,5 +366,175 @@ fout.close()
 
 - use "\t" for a tab
 - the built-in function ```repr``` can be useful. It takes any object as an argument and returns a string representation of the object.
-- 
 
+####*Python for Informatics - Chapter 8*
+
+**A. Lists**
+
+- lists are enclosed in brackets, as in ```mylist = [2,4,5,6]```
+- lists can include elements of mixed types (including other lists!)
+- lists are mutable (unlike strings)
+    - this means that you can change the order of items in a list or reassign an item in a list
+- think of a list as a relationship between indices and elements. This relationship is called a mapping. Each index "maps to" one of the elements
+- you can use the ```in``` operator to find something in a list, as in:
+    - ```mylist = [1,2,3,4]```
+    - ```check = 2 in mylist```
+
+**B. Traversing a list**
+
+- the most common way is in a for loop
+- ```len()``` returns the number of elements in the list
+- ```range()``` returns a list of indices from 0 to n-1, where n is the length of the list
+- the length of the list is the number of elements (even if it contains other lists)
+
+**C. List Operations**
+
+- the ```+``` operator concatenates lists, the ```*``` operator repeats them
+    - more precisely, it returns a list with the full original list repeated
+
+**D. List Slices**
+
+- omit the first index, the slice starts at the beginning
+- omit the second, slice goes through the end
+- "since lists are mutable, it is often useful to make a copy before performing operations that fold, spindle, or mutilate lists"
+
+**E. List Methods**
+
+- ```append()``` adds a new element to the end of the list
+- ```extend()``` takes a list as an argument and appends all of its elements
+    - as in ```list1.extend(list2)```
+- ```sort()``` arranges the elements of the list
+- most list methods are void, so don't assign them to variables!
+    - "are void" = return None
+
+**F. Deleting Elements**
+
+- ```pop``` acts kind of like a Cut and paste.
+- pull out the second value of mylist and assign it to x:
+    - ```x = mylist.pop(1)```
+- if you don't provide an index, it deletes and returns the final element
+- you could use the ```remove()``` operator to do something similar-ish, although it returns None
+- remove the word 'butter' from mylist:
+    - ```mylist.remove('butter')```
+- to remove more than one element, you can use ```del``` with a slice index
+
+**G. Lists and Functions**
+
+- ```len()```, ```max()```, ```min()```, ```sum()``` all operate on lists so you don't have to write for loops
+
+**H. Lists and Strings**
+
+- a list of characters is not the same as a string
+- you can use ```split``` to break a string into words
+    - split takes a delimiter argument to specify word boundaries
+- the inverse of ```split()``` is ```join()```
+    - join takes a list of stirngs and concatenates the elements. It is a string method, so you have to invoke it on the delimiter and pass the list as a parameter
+
+**I. Parsing Lines**
+
+- when reading from a file, you want to focus on only interesting parts of interesting lines
+- consider the following, which reads a file and prints only the third word of only lines starting with "From"
+
+```{r eval=FALSE, engine='Python'}
+## Open the file
+fhand = open('mbox-short.txt')
+
+## Loop through lines, print 3rd word of lines starting with From
+for line in fhand:
+    line = line.rstrip()
+    if not line.startswith('From ') : continue
+    words = line.split()
+    print words[2]
+```
+
+- note the use of the "contracted" if statement, with ```continue``` on the same line as the ```if```
+
+**J. Objects and values**
+
+- the association of a variable with an object is called a "reference"
+- an object with more than one reference has more than one name, so we say that the object is aliased
+- if the aliased object is mutable, changes made with one alias affect the other
+
+**K. List Arguments**
+
+- be careful to think about whether your functions are changing or creating lists
+
+**L. Debugging**
+
+- don't forget that most list methods modify the argument and return None
+    - you can't write list code the same way you write string code
+- make copies to avoid aliasing
+- "when we read and parse files, there are many opporutnities to encounter input that can crash our program so it is a good idea to employ the guardian pattern"
+
+####*Python for Informatics - Chapter 9*
+
+**A. Dictionaries**
+
+- a dictionary is a list, but more general
+- unlike in a list (integer indices), a dictionary can have almost any type as an index
+    - a mapping of key-value pairs
+- key-value pair = "an item"
+- ```dict()``` creates a new dictionary with no items
+- the order of the dictionary is not as you might expect
+    - it changes internally to maximize efficiency
+- ```len()``` called on a dictionary returns the number of key-value pairs
+- the ```in``` operator works on dictionaries (it tells whether something appears as a key in the dictionary)
+
+**B. Searching Dictionaries vs. Lists**
+
+- the in operator uses different algorithms for lists and dictionaries
+- for lists, it uses a linear search algorithm (longer list = longer search)
+- dictionaries use a hash table that has a remarkable property:
+    - the in operator takes about the same amount of time no matter how many items there are in a dictionary
+
+**C. Dictionary as a set of counters**
+
+- the function ```ord()``` converts characters into integers
+- and "implementation" is a way of performing a computation; and some are better than others!
+- one advantage of the dictionary approach:
+    - only store what we see, so no space wasted on zeros
+- there is an awesome method for Python dictionaries called ```get()```
+- the statement ```mydictionary.get('abc', 1)``` says "return the value associated with the key 'abc'. If you don't find that, return 1"
+
+**D. Looping and Dictionaries**
+
+- if you use a dicitonary as the sequence in a for statement, it iterates over the KEYS
+- if you want alphabetical printouts, create a list of the keys (this is what ```listname.keys()``` returns) and then use the list method ```listname.sort()``` to sort it
+
+**E. Advanced Text Parsing**
+
+- the ```string``` module in Python contains some useful utilities for parsing text
+- consider the following program (see comments):
+
+```{r eval=F, engine='python'}
+import string ## import "string" module
+    
+fname = raw_input('Enter the file name: ')
+try:
+    fhand = open(fname)
+except:
+    print 'File cannot be opened:', fname
+    exit()
+    
+counts = dict()
+for line in fhand:
+    line = line.translate(None, string.punctuation) ## delete punctuation
+    line = line.lower() ## coerce to lowercase
+    words = line.split()
+    for word in words:
+        if word not in counts:
+            counts[word] = 1
+        else:
+            counts[word] += 1
+```
+
+- learning to "think Pythonically" involves understanding that most common operations probably already have built-in Python functions to handle them
+
+**F. Debugging**
+
+- debugging by printing will become unwieldy very fast as we start working with bigger datasets
+- some suggestions:
+    1. work on small samples at first (to catch most errors), then slowly scale up the data size until you stop seeing issues
+    2. Check summaries and types to make sure your data look the way you expect
+    3. Write code with error-checks built in. It's generally good to have programs that break when you want them to
+    4. Make your printed debugging statements prettier and give them structure
