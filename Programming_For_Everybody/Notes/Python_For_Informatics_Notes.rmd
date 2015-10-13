@@ -538,3 +538,136 @@ for line in fhand:
     2. Check summaries and types to make sure your data look the way you expect
     3. Write code with error-checks built in. It's generally good to have programs that break when you want them to
     4. Make your printed debugging statements prettier and give them structure
+    
+####*Python for Informatics - Chapter 10*
+
+**A. Tuples**
+
+- tuples are similar to lists, but immutable
+- comma-separated lists (optionally in parentheses
+- you might also use the function ```tuple()``` as such:
+    - ```t = tuple('lupins')```
+    - returns: ```('l','u','p','i','n','s')```
+- you can slice these just like lists
+
+**B. Comparison**
+
+- comparison operators are evaluated item by item
+- the following would evaluate to true:
+    - ```(0,1,2000000) < (0,3,4)```
+
+**C. Tuple Assignment**
+
+- "one of the unique syntactic features of the Python language is the ability to have a tuple on the left side of an assignment statement. This allows you to assign more than one variable at a time when the left side is a sequence"
+
+```{r eval=FALSE, engine='python'}
+## In this example we have a two-element list and assign the 
+## ...first and second elements of the sequence to the variables x and y
+
+m = ['have','fun']
+x,y = m
+x
+# 'have'
+y
+# 'fun'
+```
+
+- that syntax can parse any sequence...but it has to be of identical number of arguments
+- dictionaries have an ```items``` methods that returns a list of key-value tuples
+    - converting a dictionary to a list of tuples is a way to output the contents of a dictionary sorted by key
+
+**D. Multiple Assignment with Dictionaries**
+
+- "by carefully constructing the list of tuples to have the value as the first element of each tuple, we can sort the list of tuples and get our dictionary contents sorted by value"
+- tuples are hashable (unlike lists), so we can use them to create composite dictionary keys
+
+**E. Sequences: strings, lists, and tuples - Oh My!**
+
+- many of the sequences (strings, lists, tuples) can be used interchangeably in many contexts
+- a few notes:
+    1. In some contexts, like a ```return``` statement, it is syntactically simpler to create a tuple than a list. In other contexts, you might prefer a list
+    2. If you want to use a sequence as a dictioanry key, you have to use an immutable type like a tuple or string.
+    3. If you are passing a sequence as an argument to a function, using tuples reduces the potential for unexpected behavior due to aliasing.
+- "Because tuples are immutable, they don't provide methods like ```sort``` and ```reverse```, which modify existing lists. However, Python provides the built-in functions ```sorted``` and ```reversed```, which take any sequence as a parameter and return a new sequence with the same elements in a different order.
+
+**F. Debugging**
+
+- programming is accomplished by building a bit, seeing if it works, writing the next part, getting it to work again, etc.
+- with these complex data structures, you can get some difficult-to-understand errors...when in doubt, strip it back down to the last working version, then start rebuilding
+- random walk programming is a bad idea
+- "finding a hard bug requires reading, running, ruminating, and sometimes retreating"
+- reading your program won't always work...if it is not a syntactical error, you could read it 100 times and not see it..."because the error is in your head"
+- immutable types are hashable, immutable types are not
+
+####*Python for Informatics - Chapter 11*
+
+**A. Regular Expressions**
+
+- regular epxressions are powerful - but weird and complicated
+- links:
+    - http://en.wikipedia.org/wiki/Regular_expression
+    - https://docs.python.org/2/library/re.html
+- in Python, the regex library is in ```re```
+- includes a ```search()``` function
+- open the file, loop through each line, use search() to only print out lines that contain the string "From:"
+
+```{r eval=False}
+import re
+hand = open('mbox-short.txt')
+for line in hand:
+    line = line.rstrip()
+    
+    # Find lines that contain "from"
+    if re.search('From:', line) :
+        print line
+
+    # Find lines that start with "From:"
+    if re.search('^From:', line) :
+        print line
+```
+
+- the period ("full stop") matches exactly one character in regular expressions
+- other stuff:
+    - period --> match exactly one character
+    - asterisk --> match 0 or more characters
+    - plus sign --> match 1 or more characters
+- match any line starting with "From" and then one or more characters followed by an at-sign:
+
+```{r eval=FALSE, engine='python'}
+import re
+hand = open('mbox-short.txt')
+for line in hand:
+    line = line.rstrip()
+    if re.search('^From:.+@', line):
+        print line
+```
+
+**B. Extracting data using regular expressions**
+
+- 
+
+####*Python for Informatics - Chapter 12*
+
+**A. Networked Programs**
+
+####*Python for Informatics - Chapter 13*
+
+**A. Using Web Services**
+
+####*Python for Informatics - Chapter 14*
+
+**A. Using databases and Structured Query Language (SQL)**
+
+####*Python for Informatics - Chapter 15*
+
+**A. Visualizing Data**
+
+####*Python for Informatics - Chapter 16*
+
+**A. Automating common tasks on your computer**
+
+####*Python For Informatics - Appendix A/B*
+
+**A. Python Programming on Windows**
+
+**B. Python Programming on Macintosh**

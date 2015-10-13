@@ -105,4 +105,94 @@ class Ship:
 - the hardest part can be just finding your own sounds
 - sounds are associated with codeskultptor, not the frame (so you need to reset!)
 - implement in Chrome! (firefox sucks with sounds)
+
+####*Video 7.4 - Sprites*
+
+**A. Sprites**
+
+- 2D visusal elements laid on top of the canvas to make things pretty
+- now, sprites are "logical entities used to organize/represent images that add visual complexity to a game"
+- sprite sheets consisted a collection of sprites organized as a single image. Note that the individual sprites need not be regularly spaced on the sprite sheet
+- note: in this class, we load them as individual images
+
+**B. Color and Transparency**
+
+- RGB model - three red, green, blue channels
+    - ```rgb(255,0,0)``` is "Red"
+- we want to draw irregular shapes (like asteroids) that lie in rectangular images
+    - the trick is to incorporate transparency
+    - ```rgba(255,0,0,0.5)``` --> 1 is opaque, 0 is transparent
+- create your images with transparent "alpha channel" in Photoshop, gIMP, paint.net, PNG image is popular
+- GIMP - open-source photoshop
+- we give the sprite custom draw and update methods...makes it easy to draw
+
+####*Video 7.5 - Debuggin*
+
+**A. Sound**
+
+- not all browsers support the same file types
+- no errors are raised if sound fails
+- be sure you have non-zero volume!
+
+**B. Code Style**
+
+- put functions in dictionaries!
+
+```{r eval=FALSE}
+    # Avoiding long if/elif chain with dictionary mapping values to actions
+
+def paddle1_faster():
+    global paddle1_vel
+    paddle1_vel += 2
+
+def paddle1_slower():
+    global paddle1_vel
+    paddle1_vel -= 2
+    
+def paddle2_faster():
+    global paddle2_vel
+    paddle2_vel += 2    
+
+def paddle2_slower():
+    global paddle2_vel
+    paddle2_vel -= 2
+
+
+inputs = {"up": paddle2_slower,
+          "down": paddle2_faster,
+          "w": paddle1_slower,
+          "s": paddle1_faster}
+
+def keydown(key):
+    for i in inputs:
+        if key == simplegui.KEY_MAP[i]:
+            inputs[i]()
+```
+
+- avoid repeated code!
+    - use functions or methods, make it correct, and move on with your life
+
+**C. Magic Constants**
+
+- magic constant = very specific hard-coded values
+    - it's much, much better to code in the calculations so your code reacts to changes and others can understand what you've done
+- seriously bro...stop hard coding values
+- give your constants names, as well
+    - don't use x, j, y, etc.
+    
+**D. One More Thing**
+
+- break your stuff down into many pieces, name those pieces so they're understandable
+
+####*Video 7.6 - Spaceship*
+
+**A. Spaceship**
+
+- ship should rotate
+- should thrust/accelerate in the forward direction
+    - two images...thruster on, thruster off
+    - thrust sound while accelerating
+- missile velocity = combination of ship velocity and forward vector
+- missile spawns from the tip of the ship
+- asteroids spawn at random place
 - 
