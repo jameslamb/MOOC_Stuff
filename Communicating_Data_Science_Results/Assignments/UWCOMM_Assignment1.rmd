@@ -10,7 +10,7 @@ For this short report, I sought to explore the relationship between weather and 
 
 The crime data come from the city of Seattle's [open data portal](https://data.seattle.gov/). The specific subset of the data used in this assignment was provided by the professor and is available [here](https://raw.githubusercontent.com/uwescience/datasci_course_materials/master/assignment6/seattle_incidents_summer_2014.csv). Weather data used below were pulled from [Weather Underground](http://www.wunderground.com/) using the [weatherData](https://cran.r-project.org/web/packages/weatherData/index.html) package in R.
 
-**Note**- The raw R Markdown behind this post can be found at [this GitHub repo]().
+**Note**- The raw R Markdown behind this post can be found at [this GitHub repo](https://github.com/jameslamb/MOOC_Stuff/blob/master/Communicating_Data_Science_Results/Assignments/UWCOMM_Assignment1.rmd).
 
 ```{r loadpackages, eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE,cache=TRUE}
 # Set up the environment
