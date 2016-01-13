@@ -227,4 +227,85 @@ print math.factorial(6)
 **C. An example from ball physics**
 
 - if f(n)/g(n) tends to a positive constant, the two functions must be of the same degree
-- 
+
+####*Reading M.7.1 - Breadth-First Search*
+
+**A. Notes**
+
+- BFS is a search strategy that models the growth of a fire in which the search proceeds radially outward from the initial search locations
+- "at any point in this search, breadth-first search processes all of the cells on the current boundary of the search before processing any new cells added to the search boundary"
+- during the depth-first search, search propagates outward in one preferred direction until it can no longer proceed in that direction
+
+**B. Graphs**
+
+- a \textbf{graph} is "a data structure that consists of two sets of objects: a collection of *nodes* and a collection of *edges* that link pairs of neighboring nodes"
+
+####*Reading M.8.1 - Recurrence Relations*
+
+**A. Recurrence Relations**
+
+- a recurrence relation is a set of equations that defines a function of one or more numbers recursively
+- initial values are given, with larger values defined as a recursive function of smaller values
+- many recursive relations map to simple closed form functions
+
+**B. Modeling the behavior of recursive programs using recurrences**
+
+- "one call to a binary search on a list of size n requires one comparison plus the number of comparisons required to perform a binary search on a list of size n/2, f(n/2)
+- there are 2^n n-bit binary numbers
+
+**C. Solutions to Common recurrences**
+
+- $f(n) = n \ f(n - 1) \quad \quad \rightarrow \quad f(n) = n$
+- $f(n) = f(n - 1) + n \quad \rightarrow \quad f(n) = \frac{1}{2}n (n+1)$
+- $f(n) = 2 f(n - 1) \quad \quad \rightarrow \quad f(n) = 2^{n-1}$
+- $f(n) = n \ f(n - 1) \quad \quad \rightarrow \quad f(n) = n!$
+- $f(n) = f(\frac{n}{2}) + 1 \quad \quad \ \rightarrow \quad f(n) \approx \log_2(n)+ 1$
+- $f(n) = f(\frac{n}{2}) + n \quad \quad \ \rightarrow \quad f(n) \approx 2n - 1$
+- $f(n) =2 f(\frac{n}{2}) \quad \quad \quad \ \rightarrow \quad f(n) \approx n$
+- $f(n) =2 f(\frac{n}{2}) + 1 \quad \quad \rightarrow \quad f(n) \approx 2 n - 1$
+- $f(n) =2 f(\frac{n}{2}) + n \quad \quad \rightarrow \quad f(n) \approx n (\log_2(n) + 1)$
+
+####*Reading M.9.1 - Trees*
+
+**A. Notes**
+
+- tree = hierarchical data structure
+- applications of trees:
+     - searching, sorting, modeling biological processes, arithmetic expressions
+     
+ **B. Basic definition and display**
+ 
+ - "rooted tree" = a collection of nodes and edges that can be organized recursively:
+    - a roote note has a value and a list of references to subtrees
+    - root nodes of subtrees are children of the root node for the original tree
+    - each subtree has exactly one parent
+- in graph theory, an "unrooted" tree is a graph with n nodes and n-1 edges, with the property that any pair of nodes is connected by a sequence of edges
+
+**C. Structural Properties of Trees**
+
+- nodes are classified based on their number of children
+- a node withotu children is a "leaf node"
+- nodes with one or more children are internal/interior nodes
+-  binary trees = all nodes have two or fewer children
+    - full binary trees - binary trees in which all internal nodes have exactly two nodes
+    - full binary trees arise in search and sort
+
+####*Reading M.9.2 - Minimax*
+
+**A. Notes**
+
+- consider a tic-tac-toe board, where parent nodes represent game states and children represent one move beyond that game state
+- key assumption behind minimax --> both players will make the best move
+- arranging game states into a tree, you search the tree (using simple min/max rules) and look for paths with the most favorable scores
+
+####*Reading M.10.1 - Invariants*
+
+**A. Notes**
+
+- building blocks for reasoning about whether or not your program works are logical conditions that consist of Boolean expression involving values in the program
+- an \textbf{invariant} is a condition that is guaranteed to be true at a specified set of points during the execution of a program
+- a coding philosophy:
+    - "that the invariant is true prior to the fragment. Write a code fragment that moves the computation towards the final answer and ensures that the invariant is again true at the end of the fragment.
+- invariants might also be used to reason about the correctness of recursive programs
+- you could also use invariants explicitly in classes to check their behavior
+
