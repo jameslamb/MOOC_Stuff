@@ -658,6 +658,10 @@ for line in hand:
 
 **A. Using databases and Structured Query Language (SQL)**
 
+- a database is a file organized for storing data
+- DBs sit on disk
+"database software maintains its performance by building indexes as data is added to the database to allow the comput "
+
 ####*Python for Informatics - Chapter 15*
 
 **A. Visualizing Data**
