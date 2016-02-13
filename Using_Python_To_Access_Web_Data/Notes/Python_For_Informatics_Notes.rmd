@@ -1209,12 +1209,19 @@ SELECT * FROM Follows JOIN People
 **J. Debugging**
 
 - see the "SQLite Database Browser"
-- 
-
 
 ####*Python for Informatics - Chapter 15*
 
-**A. Visualizing Data**
+**A. Building a Google map from geocoded data**
+
+- imagine that you have a bunch of local survey data and want to use the google geocoding API to clean them up
+- you might use a DB as a local cache of the results (since the API is rate-limited)
+
+**B. Visualizaing Networks and interconnections**
+
+**C. Visualizing Mail Data**
+
+- 
 
 ####*Python for Informatics - Chapter 16*
 
